@@ -1,0 +1,252 @@
+@let k = kit();
+
+<!-- ambient background -->
+<div class="bg-mesh" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav" appNavScroll>
+  <a href="#top" class="nav-logo">JACOB&nbsp;YCHYE</a>
+  <nav class="nav-links">
+    <a href="#reach">Reach</a>
+    <a href="#performance">Performance</a>
+    <a href="#audience">Audience</a>
+    <a href="#partner">Partner</a>
+  </nav>
+  <a href="#contact" class="btn btn-sm">Work with me</a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge reveal" appReveal>
+        <span class="dot"></span> {{ k.available }}
+      </div>
+      <div class="hero-handle reveal" appReveal>
+        {{ k.handle }}
+        <svg class="verified" viewBox="0 0 24 24" aria-label="Verified"><path d="M12 1l2.9 2.1 3.5-.4 1.2 3.3 3 1.9-1.2 3.3 1.2 3.3-3 1.9-1.2 3.3-3.5-.4L12 23l-2.9-2.1-3.5.4-1.2-3.3-3-1.9 1.2-3.3L1.4 9l3-1.9 1.2-3.3 3.5.4z" fill="currentColor"/><path d="M9.5 12.5l1.8 1.8 3.6-3.8" fill="none" stroke="#070b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 class="hero-title reveal" appReveal>
+        {{ k.heroTitleLead }}<br /><span class="grad">{{ k.heroTitleAccent }}</span>
+      </h1>
+      <p class="hero-sub reveal" appReveal>{{ k.heroSub }}</p>
+
+      <div class="hero-stats reveal" appReveal>
+        @for (s of k.heroStats; track s.label) {
+          <div class="hstat">
+            <div class="hstat-num" [appCountUp]="s.value" [countSuffix]="s.suffix ?? ''" [countDecimals]="s.decimals ?? 0">0</div>
+            <div class="hstat-label">{{ s.label }}</div>
+          </div>
+        }
+      </div>
+
+      <div class="hero-cta reveal" appReveal>
+        <a href="#contact" class="btn">Start a collaboration</a>
+        <a href="#reach" class="btn btn-ghost">See the numbers ↓</a>
+      </div>
+      <p class="hero-foot reveal" appReveal>{{ k.heroFoot }}</p>
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <section class="section" id="glance">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>The snapshot</div>
+      <h2 class="section-title reveal" appReveal>A following that punches far above its size.</h2>
+      <div class="glance-grid">
+        @for (s of k.glanceStats; track s.name; let i = $index) {
+          <div class="card stat-card reveal" appReveal [revealDelay]="stagger(i)">
+            <div class="stat-num"><span [appCountUp]="s.value" [countSuffix]="s.suffix ?? ''" [countDecimals]="s.decimals ?? 0">0</span></div>
+            <div class="stat-name">{{ s.name }}</div>
+            <div class="stat-note">{{ s.note }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- REACH & DISCOVERY -->
+  <section class="section" id="reach">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>Reach &amp; discovery</div>
+      <h2 class="section-title reveal" appReveal>76% of my views come from people who<br />don't follow me yet.</h2>
+      <p class="section-lead reveal" appReveal>
+        That's the metric that matters for a hotel. My content doesn't just preach to my own audience —
+        it's pushed into the feeds of <strong>new travellers</strong> discovering destinations for the first time.
+      </p>
+
+      <div class="reach-grid">
+        <div class="card big-figure reveal" appReveal>
+          <div class="bf-num grad" [appCountUp]="k.nonFollowerPct.value" [countSuffix]="k.nonFollowerPct.suffix ?? ''">0</div>
+          <div class="bf-label">of views from non-followers</div>
+          <div class="split-bar">
+            <span class="split-fill" appBarFill [barVal]="k.nonFollowerPct.value" [barMax]="100"></span>
+          </div>
+          <div class="split-legend">
+            <span><i class="sw sw-teal"></i>Non-followers 76%</span>
+            <span><i class="sw sw-dim"></i>Followers 24%</span>
+          </div>
+        </div>
+
+        <div class="card big-figure reveal" appReveal>
+          <div class="bf-num grad-gold" [appCountUp]="k.reachMultiple.value" [countSuffix]="k.reachMultiple.suffix ?? ''" [countDecimals]="k.reachMultiple.decimals ?? 0">0</div>
+          <div class="bf-label">reach vs. my follower count</div>
+          <p class="bf-desc">{{ k.reachDesc }}</p>
+        </div>
+
+        <div class="card donut-card reveal" appReveal>
+          <div class="donut-wrap">
+            <svg viewBox="0 0 120 120" class="donut">
+              <circle class="donut-track" cx="60" cy="60" r="52" />
+              <circle class="donut-seg seg-reels" cx="60" cy="60" r="52" appDonutSeg [pct]="k.donutSegments[0].pct" [segOffset]="k.donutSegments[0].offset" />
+              <circle class="donut-seg seg-stories" cx="60" cy="60" r="52" appDonutSeg [pct]="k.donutSegments[1].pct" [segOffset]="k.donutSegments[1].offset" />
+            </svg>
+            <div class="donut-center">
+              <strong>{{ k.donutCenterValue }}</strong>
+              <span>{{ k.donutCenterLabel }}</span>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <span><i class="sw sw-teal"></i>Reels — 83.8%</span>
+            <span><i class="sw sw-gold"></i>Stories — 16.2%</span>
+            <span><i class="sw sw-dim"></i>Posts — 0%</span>
+          </div>
+          <p class="donut-cap">Where my views come from, by format</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE / TOP REELS -->
+  <section class="section" id="performance">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>Top performing content</div>
+      <h2 class="section-title reveal" appReveal>Recent reels, by views.</h2>
+      <p class="section-lead reveal" appReveal>A single reel routinely outreaches my entire follower base. Here are my five strongest from the last 30 days.</p>
+
+      <div class="card chart-card reveal" appReveal>
+        <div class="bars" id="reelBars">
+          @for (r of k.reels; track r.label) {
+            <div class="bar-row">
+              <span class="bar-label">{{ r.label }}</span>
+              <div class="bar-track"><div class="bar-fill" appBarFill [barVal]="r.val" [barMax]="r.max"></div></div>
+              <span class="bar-val" [appCountUp]="r.value" [countSuffix]="r.suffix ?? ''" [countDecimals]="r.decimals ?? 0">0</span>
+            </div>
+          }
+        </div>
+        <p class="chart-cap">Views per reel · last 30 days. Reels drive <strong>{{ k.reelsCaptionPct }}</strong> of all my interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT -->
+  <section class="section" id="engagement">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>Engagement quality</div>
+      <h2 class="section-title reveal" appReveal>An audience that acts.</h2>
+
+      <div class="eng-grid">
+        @for (e of k.engagement; track e.label; let i = $index) {
+          <div class="card eng-card reveal" appReveal [revealDelay]="stagger(i)">
+            <div class="eng-num" [class.grad]="e.accent === 'teal'" [class.grad-gold]="e.accent === 'gold'" [appCountUp]="e.value" [countSuffix]="e.suffix ?? ''" [countDecimals]="e.decimals ?? 0">0</div>
+            <div class="eng-label">{{ e.label }}</div>
+            <p class="eng-note">{{ e.note }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE ACTIVITY -->
+  <section class="section" id="audience">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>Audience activity</div>
+      <h2 class="section-title reveal" appReveal>When your future guests are watching.</h2>
+      <p class="section-lead reveal" appReveal>My audience is most active in the early hours — content lands while they're dreaming about their next trip. Posting cadence is tuned to these windows.</p>
+
+      <div class="card chart-card reveal" appReveal>
+        <div class="vbars" id="timeBars">
+          @for (t of k.timeBars; track t.x) {
+            <div class="vbar" [class.peak]="t.peak">
+              <div class="vbar-track"><div class="vbar-fill" appBarFill orientation="v" [barVal]="t.val" [barMax]="t.max"></div></div>
+              <span class="vbar-x">{{ t.x }}</span>
+            </div>
+          }
+        </div>
+        <p class="chart-cap">Active audience by time of day · peak at <strong>{{ k.peakTime }}</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT PILLARS -->
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>What I create</div>
+      <h2 class="section-title reveal" appReveal>Five content pillars.</h2>
+      <div class="pillar-grid">
+        @for (p of k.pillars; track p.title; let i = $index) {
+          <div class="card pillar reveal" appReveal [revealDelay]="stagger(i)">
+            <div class="pillar-ico">{{ p.icon }}</div>
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PARTNER -->
+  <section class="section" id="partner">
+    <div class="container">
+      <div class="eyebrow reveal" appReveal>Why partner with me</div>
+      <h2 class="section-title reveal" appReveal>What a collaboration delivers for your property.</h2>
+      <div class="partner-grid">
+        @for (w of k.whyCards; track w.title; let i = $index) {
+          <div class="card why reveal" appReveal [revealDelay]="stagger(i)">
+            <div class="why-k grad" [appCountUp]="w.value" [countSuffix]="w.suffix ?? ''" [countDecimals]="w.decimals ?? 0">0</div>
+            <h3>{{ w.title }}</h3>
+            <p>{{ w.desc }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="deliver card reveal" appReveal>
+        <h3>Ways we can work together</h3>
+        <ul class="deliver-list">
+          @for (d of k.deliverables; track d.text) {
+            <li><span>{{ d.icon }}</span> {{ d.text }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-inner card reveal" appReveal>
+        <div class="eyebrow">Let's collaborate</div>
+        <h2 class="contact-title">Let's create something<br /><span class="grad">worth travelling for.</span></h2>
+        <p class="contact-lead">Tell me about your property and what you'd like to highlight — I'll come back with a tailored content concept.</p>
+        <div class="contact-btns">
+          <a [href]="'mailto:' + k.contact.email + '?subject=Partnership%20enquiry%20%E2%80%94%20Jacob%20Ychye'" class="btn">✉️ Email me</a>
+          <a [href]="k.contact.instagramUrl" target="_blank" rel="noopener" class="btn btn-ghost">📸 {{ k.contact.instagram }}</a>
+        </div>
+        <p class="contact-sub">Outdoor &amp; travel creator · Israel · open to on-site &amp; destination partnerships worldwide</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-row">
+    <span>Jacob Ychye · Creator Media Kit</span>
+    <span>{{ k.metricsNote }}</span>
+  </div>
+</footer>
