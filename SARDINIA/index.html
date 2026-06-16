@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#062f3a">
+  <meta name="description" content="מסלול סרדיניה 21–25 ביוני 2026: שני מלונות יוקרה, שני לילות בכל אחד (7Pines ו-Baglioni), השכמה מוקדמת ביום האחרון לטיסה מקליארי. Cala Coticcio, לגונת San Teodoro, Cala Luna ו-Cala Goloritzé.">
+  <title>סרדיניה · שני מלונות × 2 לילות + מפה אינטראקטיבית | 21–25 ביוני 2026</title>
+  <style>
+    :root {
+      --navy:#062f3a; --teal:#057c8c; --aqua:#42d0ce; --sky:#dff7f5; --sand:#f6efe2;
+      --paper:#fffdf9; --ink:#102a31; --muted:#60747a; --line:#d8e4e4;
+      --warning:#fff2d5; --danger:#ffebe6; --success:#e5f7ed;
+      --shadow:0 14px 38px rgba(6,47,58,.13); --radius:22px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; direction:rtl; }
+    body { margin:0; color:var(--ink); background:linear-gradient(180deg,#e6f6f5 0,#fffdf9 520px); font-family:"Heebo","Assistant",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; text-rendering:optimizeLegibility; }
+    a { color:inherit; }
+    img { display:block; width:100%; }
+    button { font:inherit; }
+
+    .hero { min-height:70vh; padding:max(28px,env(safe-area-inset-top)) 20px 34px; display:flex; align-items:flex-end; color:white; background:linear-gradient(180deg,rgba(0,17,22,.08),rgba(0,22,28,.93)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Coticcio.jpg?width=1900") center/cover no-repeat; }
+    .hero-inner { width:min(1120px,100%); margin:auto; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.15); backdrop-filter:blur(10px); border-radius:999px; font-size:.86rem; font-weight:800; }
+    h1 { margin:14px 0 9px; max-width:950px; font-size:clamp(2.1rem,8.5vw,4.6rem); line-height:1.04; letter-spacing:-.02em; }
+    .hero p { max-width:840px; margin:0 0 18px; font-size:clamp(1rem,3.8vw,1.22rem); }
+    .hero-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .hero-tags span { padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.23); background:rgba(255,255,255,.12); font-size:.84rem; }
+
+    .sticky-nav { position:sticky; top:0; z-index:60; overflow-x:auto; white-space:nowrap; background:rgba(255,253,249,.94); backdrop-filter:blur(15px); border-bottom:1px solid var(--line); scrollbar-width:none; }
+    .sticky-nav::-webkit-scrollbar { display:none; }
+    .sticky-inner { width:max-content; min-width:100%; display:flex; gap:7px; padding:10px max(14px,env(safe-area-inset-right)) 10px max(14px,env(safe-area-inset-left)); }
+    .sticky-nav a { text-decoration:none; font-weight:800; font-size:.86rem; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:white; }
+
+    main { width:min(1120px,calc(100% - 28px)); margin:auto; padding:28px 0 70px; }
+    section { margin:0 0 38px; scroll-margin-top:78px; }
+    h2 { margin:0 0 9px; font-size:clamp(1.7rem,6vw,2.5rem); letter-spacing:-.01em; line-height:1.15; }
+    .lead { color:var(--muted); margin:0 0 18px; }
+
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
+    .card { background:rgba(255,255,255,.94); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+    .summary { grid-column:span 3; padding:17px; min-height:138px; }
+    .summary small { color:var(--muted); }
+    .summary strong { display:block; margin:4px 0; font-size:1.4rem; line-height:1.15; }
+
+    .alert { margin:14px 0; padding:15px 16px; border-radius:17px; background:var(--warning); border:1px solid #edd08d; }
+    .alert.danger { background:var(--danger); border-color:#efbdb3; }
+    .alert.success { background:var(--success); border-color:#b9e4ca; }
+    .alert.info { background:#eaf3fb; border-color:#bcd6ef; }
+    .alert strong { display:block; margin-bottom:3px; }
+
+    .btn-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .btn { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:10px 13px; border-radius:13px; border:1px solid var(--line); background:white; text-decoration:none; font-weight:800; cursor:pointer; }
+    .btn.primary { color:white; background:var(--navy); border-color:var(--navy); }
+    .btn.whatsapp { color:#063d26; background:#dff8e8; border-color:#b6e9ca; }
+    .btn.small { min-height:38px; padding:7px 10px; font-size:.86rem; }
+
+    .route-banner { padding:20px; background:linear-gradient(135deg,var(--navy),var(--teal)); color:white; }
+    .route-line { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-weight:800; font-size:clamp(.98rem,3.4vw,1.15rem); }
+    .route-line .arrow { opacity:.7; }
+    .route-line .stop { unicode-bidi:plaintext; }
+
+    .day { overflow:hidden; margin-bottom:18px; }
+    .day-head { padding:19px 20px; color:white; background:linear-gradient(135deg,var(--navy),var(--teal)); }
+    .day-head small { opacity:.85; }
+    .day-head h3 { margin:3px 0 4px; font-size:1.42rem; unicode-bidi:plaintext; }
+    .day-head p { margin:0; opacity:.92; }
+    .checkinout { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .checkinout span { font-size:.78rem; font-weight:800; padding:4px 9px; border-radius:999px; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28); }
+    .timeline { padding:7px 18px 17px; }
+    .timeline-item { display:grid; grid-template-columns:68px 1fr; gap:11px; padding:13px 0; border-bottom:1px dashed var(--line); }
+    .timeline-item:last-child { border-bottom:0; }
+    .time { color:var(--teal); font-weight:900; unicode-bidi:plaintext; }
+    .activity strong { display:block; }
+    .activity p { margin:3px 0 0; color:var(--muted); }
+    .drive { display:inline-block; margin-top:7px; padding:3px 8px; border-radius:999px; background:#e8f6f4; border:1px solid #c6e6e2; font-size:.81rem; font-weight:800; }
+
+    .reservation-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; }
+    .reservation { padding:17px; }
+    .reservation .type { color:var(--teal); font-size:.82rem; font-weight:900; }
+    .reservation h3 { margin:4px 0 5px; font-size:1.25rem; unicode-bidi:plaintext; }
+    .reservation p { margin:0 0 9px; color:var(--muted); }
+    .contact-line { padding:7px 0; border-top:1px dashed var(--line); font-size:.9rem; }
+    .contact-line:first-of-type { border-top:0; }
+    .contact-line a { color:var(--teal); font-weight:800; text-decoration:none; unicode-bidi:plaintext; }
+
+    .sup-table-wrap { overflow-x:auto; background:white; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+    table { width:100%; min-width:760px; border-collapse:collapse; }
+    th,td { padding:13px 14px; text-align:start; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { background:#eaf6f4; font-size:.88rem; }
+    tr:last-child td { border-bottom:0; }
+    .yes { color:#137046; font-weight:900; }
+    .maybe { color:#9a6500; font-weight:900; }
+    .no { color:#a43120; font-weight:900; }
+
+    .location { overflow:hidden; margin-bottom:22px; }
+    .location-body { padding:20px; }
+    .location-kicker { color:var(--teal); font-size:.82rem; font-weight:900; }
+    .location h3 { margin:3px 0 8px; font-size:1.6rem; unicode-bidi:plaintext; }
+    .location-body > p { margin:0 0 12px; color:var(--muted); }
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:13px 0; }
+    .detail { padding:13px; border:1px solid #d8eaea; border-radius:15px; background:#f5fbfa; }
+    .detail strong { display:block; margin-bottom:3px; }
+    .detail p { margin:0; color:var(--muted); font-size:.91rem; }
+    .shot-list { padding:13px 16px; background:var(--sand); border-radius:16px; margin-top:12px; }
+    .shot-list strong { display:block; margin-bottom:4px; }
+    .shot-list ul { margin:0; padding-inline-start:20px; }
+
+    .gallery { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(79%,1fr); gap:10px; overflow-x:auto; scroll-snap-type:inline mandatory; overscroll-behavior-inline:contain; padding:0 16px 18px; }
+    .photo-card { margin:0; overflow:hidden; border-radius:17px; border:1px solid var(--line); background:white; scroll-snap-align:center; }
+    .photo-button { width:100%; height:245px; padding:0; border:0; background:#dce8e8; position:relative; cursor:zoom-in; }
+    .photo-button img { width:100%; height:100%; object-fit:cover; }
+    .photo-error { display:none; position:absolute; inset:0; place-items:center; padding:20px; color:var(--muted); }
+    figcaption { display:flex; justify-content:space-between; gap:8px; padding:10px 12px; font-size:.86rem; }
+    figcaption a { color:var(--teal); font-size:.75rem; white-space:nowrap; }
+
+    .source-box { padding:18px; color:var(--muted); font-size:.87rem; }
+    .source-box a { color:var(--teal); }
+    .source-box li { margin-bottom:7px; }
+
+    .lightbox { position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:18px; background:rgba(0,13,17,.94); }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:100%; max-height:88vh; object-fit:contain; border-radius:14px; }
+    .close { position:absolute; top:max(14px,env(safe-area-inset-top)); inset-inline-start:14px; width:46px; height:46px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.4); color:white; font-size:1.5rem; }
+    footer { padding:20px 18px max(34px,env(safe-area-inset-bottom)); text-align:center; color:var(--muted); font-size:.84rem; }
+
+    .dinner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .dinner-card{overflow:hidden}
+    .dinner-head{position:relative;padding:20px 56px 20px 20px;color:white;background:linear-gradient(135deg,#062f3a,#057c8c)}
+    .dinner-head small{opacity:.85;font-weight:800}
+    .dinner-head h3{margin:4px 0 0;font-size:1.45rem;unicode-bidi:plaintext}
+    .info-toggle{position:absolute;top:16px;inset-inline-end:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.18);color:#fff;font-weight:900;font-size:1.05rem;cursor:pointer;display:grid;place-items:center;transition:background .2s ease}
+    .info-toggle:hover{background:rgba(255,255,255,.32)}
+    .info-toggle[aria-expanded="true"]{background:#fff;color:var(--navy)}
+    .dinner-body{padding:17px}
+    .dinner-body p{margin:0 0 10px;color:var(--muted)}
+    .dinner-tags{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+    .dinner-tags span{padding:4px 8px;border-radius:999px;background:#edf7f5;border:1px solid #d0e9e5;font-size:.78rem;font-weight:800}
+    .film-plan{padding:12px 14px;border-radius:15px;background:var(--sand);margin-top:10px}
+    .film-plan strong{display:block;margin-bottom:3px}
+    .alt-panel{max-height:0;overflow:hidden;opacity:0;background:#f3faf9;border-top:1px solid transparent;transition:max-height .38s ease,opacity .38s ease,border-color .38s ease}
+    .alt-panel.open{max-height:760px;opacity:1;border-top-color:var(--line)}
+    .alt-inner{padding:14px 17px}
+    .alt-inner > strong{display:block;margin-bottom:6px;color:var(--navy)}
+    .alt-item{padding:11px 0;border-bottom:1px dashed var(--line)}
+    .alt-item:last-child{border-bottom:0}
+    .alt-item h5{margin:0 0 3px;font-size:1rem;unicode-bidi:plaintext}
+    .alt-item .alt-note{margin:0 0 7px;color:var(--muted);font-size:.87rem}
+    .alt-links{display:flex;gap:7px;flex-wrap:wrap}
+    .alt-links a{font-size:.8rem;font-weight:800;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:5px 9px;background:#fff;unicode-bidi:plaintext}
+
+    .map-shell{overflow:hidden}
+    .map-toolbar{display:flex;gap:8px;overflow-x:auto;padding:14px 14px 10px;background:white;border-bottom:1px solid var(--line);scrollbar-width:none}
+    .map-toolbar::-webkit-scrollbar{display:none}
+    .map-filter{flex:0 0 auto;border:1px solid var(--line);background:white;border-radius:999px;padding:8px 13px;font-weight:800;cursor:pointer;color:var(--ink);transition:background .18s ease,color .18s ease,border-color .18s ease}
+    .map-filter.active{background:var(--navy);border-color:var(--navy);color:white}
+    #trip-map{width:100%;height:min(68vh,640px);min-height:440px;background:#dce9e9}
+    .map-note{padding:12px 15px;background:#f7fbfa;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+    .map-legend{display:flex;gap:14px;flex-wrap:wrap;padding:13px 15px;background:white;border-top:1px solid var(--line)}
+    .legend-group{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .legend-item{display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:800}
+    .legend-dot{width:13px;height:13px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px rgba(0,0,0,.16)}
+    .legend-line{width:26px;height:0;border-top:3px dashed #3b5bff;display:inline-block;border-radius:2px}
+    .legend-sep{width:1px;align-self:stretch;background:var(--line)}
+    .marker-pin{position:relative;width:36px;height:36px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;border:2px solid #fff;box-shadow:0 7px 16px rgba(6,47,58,.34)}
+    .marker-pin::before{content:"";position:absolute;inset:3px;border-radius:inherit;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.5),rgba(255,255,255,0) 58%)}
+    .marker-pin span{position:relative;transform:rotate(45deg);font-size:16px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
+    .marker-transport{background:linear-gradient(135deg,#4a68ff,#2f49d6)}
+    .marker-hotel{background:linear-gradient(135deg,#8a5bff,#6a35e0)}
+    .marker-attraction{background:linear-gradient(135deg,#13b886,#0c9f6e)}
+    .marker-restaurant{background:linear-gradient(135deg,#ff7a45,#ef6c3a)}
+    .map-popup{direction:rtl;text-align:right;min-width:190px}
+    .map-popup h4{margin:0 0 5px;font-size:1rem;unicode-bidi:plaintext}
+    .map-popup .pop-tag{display:inline-block;margin:0 0 7px;padding:2px 9px;border-radius:999px;font-size:.72rem;font-weight:800;color:#fff}
+    .map-popup p{margin:0 0 9px;color:#5d7075;font-size:.9rem}
+    .map-popup a{display:inline-block;text-decoration:none;font-weight:800;color:#057c8c}
+    .leaflet-popup-content-wrapper{border-radius:16px;box-shadow:0 12px 30px rgba(6,47,58,.22)}
+    .leaflet-popup-content{margin:13px 15px;direction:rtl}
+    .day-buttons{display:flex;gap:8px;overflow-x:auto;padding:0 14px 14px;background:white;scrollbar-width:none}
+    .day-buttons::-webkit-scrollbar{display:none}
+    .day-map-btn{flex:0 0 auto;border:1px solid var(--line);background:#edf7f5;border-radius:12px;padding:8px 12px;font-weight:800;cursor:pointer;transition:background .18s ease}
+    .day-map-btn:hover{background:#dcefec}
+    @media(max-width:640px){#trip-map{height:62vh;min-height:460px}.map-filter{padding:8px 11px;font-size:.84rem}}
+    @media(max-width:760px){.dinner-grid{grid-template-columns:1fr}}
+    @media(max-width:760px){.summary{grid-column:span 6}.reservation-grid{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.hero{min-height:66vh}}
+    @media(min-width:850px){.gallery{grid-auto-flow:initial;grid-template-columns:repeat(5,1fr);overflow:visible}.photo-button{height:185px}}
+    @media print{.sticky-nav,.btn-row,.lightbox,.info-toggle{display:none!important}body{background:white}.hero{min-height:auto;padding:35px;background:var(--navy)}main{width:100%;padding:18px}.card{box-shadow:none;break-inside:avoid}.alt-panel{max-height:none;opacity:1}.gallery{grid-template-columns:repeat(3,1fr);grid-auto-flow:initial;overflow:visible}.photo-button{height:150px}}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.map-filter,.day-map-btn,.alt-panel,.info-toggle{transition:none}}
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="badge">21–25 ביוני 2026 · שני מלונות × 2 לילות</div>
+      <h1>סרדיניה — שני מלונות יוקרה, שני לילות בכל אחד</h1>
+      <p>ארבעת המיקומים הקולנועיים — Cala Coticcio, לגונת San Teodoro, Cala Luna ו-Cala Goloritzé — עם לינה מאוזנת: שני לילות ב-7Pines ושני לילות ב-Baglioni, וביום האחרון השכמה מוקדמת ונסיעה לטיסה מקליארי.</p>
+      <div class="hero-tags">
+        <span>נחיתה: 09:55 · קליארי</span>
+        <span>המראה: 11:00 · קליארי</span>
+        <span>2 מלונות × 2 לילות</span>
+        <span>רכב — הלוך ושוב מקליארי</span>
+        <span>2 ימי סירה פרטית</span>
+        <span>סאפ מתנפח אחד</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky-nav" aria-label="ניווט בדף">
+    <div class="sticky-inner">
+      <a href="#route">המסלול</a><a href="#interactive-map">מפה אינטראקטיבית</a>
+      <a href="#schedule">תוכנית יומית</a>
+      <a href="#dinners">ארוחות ערב + חלופות</a>
+      <a href="#reserve">הזמנות</a>
+      <a href="#sup">תוכנית סאפ</a>
+      <a href="#locations">מיקומים ותמונות</a>
+      <a href="#rules">רחפן וגישה</a>
+      <a href="#sources">מקורות</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="route">
+      <h2>המסלול — שני מלונות, שני לילות בכל אחד</h2>
+      <p class="lead">לינה מאוזנת בשני מלונות יוקרה צפוניים. הטיסות נעולות על קליארי (דרום), ולכן ביום האחרון יוצאים מוקדם מ-Baglioni לנסיעה של כ-3 שעות לשדה התעופה.</p>
+
+      <div class="card route-banner">
+        <div class="route-line">
+          <span class="stop">נמל התעופה קליארי</span><span class="arrow">←</span>
+          <span class="stop">7Pines (2 לילות)</span><span class="arrow">←</span>
+          <span class="stop">לגונת San Teodoro</span><span class="arrow">←</span>
+          <span class="stop">Baglioni (2 לילות)</span><span class="arrow">←</span>
+          <span class="stop">מפרץ Orosei (Cala Gonone)</span><span class="arrow">←</span>
+          <span class="stop">נמל התעופה קליארי</span>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:14px">
+        <div class="card summary"><small>מלונות</small><strong>2 × 2 לילות</strong><span>7Pines (21–23) ו-Baglioni (23–25) — בדיוק שני לילות בכל אחד.</span></div>
+        <div class="card summary"><small>היום האחרון</small><strong>השכמה מוקדמת</strong><span>יציאה מ-Baglioni ב-~04:40 לטיסת 11:00 מקליארי (~3 שעות, 251 ק״מ).</span></div>
+        <div class="card summary"><small>ימי סירה</small><strong>22 ו-24 ביוני</strong><span>Cala Coticcio בצפון, ו-Cala Luna + Cala Goloritzé במפרץ Orosei.</span></div>
+        <div class="card summary"><small>הנסיעה הארוכה</small><strong>כ-4 שעות</strong><span>מקליארי ל-7Pines ביום ההגעה. הרכב הלוך-ושוב מקליארי.</span></div>
+      </div>
+
+      <div class="alert danger">
+        <strong>היום האחרון — הפשרה של שני המלונות</strong>
+        כדי לתפוס את טיסת 11:00 מקליארי בזמן שלנים ב-Baglioni, צאו בסביבות 04:40–05:00 (~3 שעות נסיעה). הכול ארוז מהערב הקודם, החשבון סגור, וקופסת ארוחת בוקר מהמלון. תאמו צ׳ק-אאוט מוקדם מראש.
+      </div>
+
+      <div class="alert info">
+        <strong>אין טיסה פנימית Cagliari–Olbia בתאריכים שלכם.</strong>
+        הקו הישיר של Aeroitalia בין קליארי לאולביה פועל רק מ-3 ביולי עד 31 באוגוסט 2026, ובימי שני ושישי בלבד. לכן הרכב נשכר הלוך-ושוב מקליארי, ואת מרחק הצפון–דרום מכסים בנהיגה.
+      </div>
+
+      <div class="alert info">
+        <strong>שעות צ׳ק-אין / צ׳ק-אאוט (לאישור מול המלונות)</strong>
+        7Pines — כניסה מ-15:00, יציאה עד 11:00 · Baglioni — כניסה מ-15:00, יציאה עד 11:00 (ב-25/6 עוזבים ב-~04:40 — תאמו צ׳ק-אאוט מוקדם וסגרו חשבון בערב הקודם).
+      </div>
+
+      <div class="alert">
+        <strong>זמני הנהיגה הם הערכות תכנון — לא תנועה בזמן אמת.</strong>
+        פתחו את כפתורי Google Maps לפני כל יציאה. הוסיפו 15–25 דקות לעומס הקיץ, חניה, תדלוק והעמסת ציוד צילום.
+      </div>
+    </section>
+
+    <section id="interactive-map">
+      <h2>מפת הטיול האינטראקטיבית</h2>
+      <p class="lead">כל מלון, מסעדה, מרינה, שדה תעופה ומיקום קולנועי על מפה אחת. הקישו על סמן לפרטים ולניווט Google Maps בלחיצה אחת.</p>
+
+      <div class="card map-shell">
+        <div class="map-toolbar" aria-label="מסנני מפה">
+          <button class="map-filter active" type="button" data-category="all">כל הנקודות</button>
+          <button class="map-filter" type="button" data-category="attraction">מיקומים קולנועיים</button>
+          <button class="map-filter" type="button" data-category="hotel">מלונות</button>
+          <button class="map-filter" type="button" data-category="restaurant">מסעדות</button>
+          <button class="map-filter" type="button" data-category="transport">שדות תעופה ומרינות</button>
+        </div>
+
+        <div class="day-buttons" aria-label="התמקדות במפה לפי יום">
+          <button class="day-map-btn" type="button" data-day="1">יום 1</button>
+          <button class="day-map-btn" type="button" data-day="2">יום 2</button>
+          <button class="day-map-btn" type="button" data-day="3">יום 3</button>
+          <button class="day-map-btn" type="button" data-day="4">יום 4</button>
+          <button class="day-map-btn" type="button" data-day="5">יום 5</button>
+          <button class="day-map-btn" type="button" data-day="all">הצג את כל הטיול</button>
+        </div>
+
+        <div id="trip-map" role="application" aria-label="מפת מסלול אינטראקטיבית של סרדיניה"></div>
+
+        <div class="map-legend">
+          <div class="legend-group">
+            <div class="legend-item"><span class="legend-dot" style="background:#0e9f6e"></span>מיקומים קולנועיים</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#7c4dff"></span>מלונות</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#ef6c3a"></span>מסעדות</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#3b5bff"></span>שדות תעופה ומרינות</div>
+          </div>
+          <div class="legend-sep" aria-hidden="true"></div>
+          <div class="legend-group">
+            <div class="legend-item"><span class="legend-line" style="border-top-color:#3b5bff"></span>מסלול נהיגה (סכמטי)</div>
+            <div class="legend-item"><span class="legend-line" style="border-top-color:#0e9f6e"></span>סירה — Cala Coticcio</div>
+            <div class="legend-item"><span class="legend-line" style="border-top-color:#057c8c"></span>סירה — Cala Luna + Goloritzé</div>
+          </div>
+        </div>
+
+        <div class="map-note">
+          קווי המסלול סכמטיים ומציגים את סדר הטיול, לא ניווט כביש מדויק או ניווט סירה מדויק. אם המפה אינה נטענת — ודאו חיבור לאינטרנט; אריחי המפה נטענים מהרשת.
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2>לוח הזמנים המלא (2+2)</h2>
+      <p class="lead">חמישה ימים, ארבעה לילות. שני לילות ב-7Pines (כולל Cala Coticcio), שני לילות ב-Baglioni (כולל יום הסירה במפרץ Orosei), ויום אחרון של נסיעה מוקדמת לקליארי.</p>
+
+      <article class="card day">
+        <div class="day-head">
+          <small>יום ראשון · 21 ביוני</small>
+          <h3>קליארי → 7Pines Resort Sardinia</h3>
+          <p>הנסיעה הארוכה ביותר בהתחלה, ואחריה איפוס יוקרה וארוחת ערב עם שקיעה במסעדה עטורת כוכב מישלן.</p>
+          <div class="checkinout"><span>צ׳ק-אין 7Pines: מ-15:00</span></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="time">09:55</div><div class="activity"><strong>נחיתה בנמל התעופה קליארי</strong><p>איסוף מזוודות ורכב שכור (איסוף בקליארי). צלמו את הרכב ואת מד הדלק לפני היציאה.</p></div></div>
+          <div class="timeline-item"><div class="time">10:45</div><div class="activity"><strong>נסיעה ישירה ל-7Pines Resort Sardinia</strong><p>עצירה אחת של 25 דקות לאוכל וקפה. הימנעו מעצירת תיירות נוספת ביום ההגעה.</p><span class="drive">כ-4:00 שעות · בערך 279 ק״מ</span><div class="btn-row"><a class="btn small primary" href="https://www.google.com/maps/dir/?api=1&origin=Cagliari%20Elmas%20Airport&destination=7Pines%20Resort%20Sardinia&travelmode=driving" target="_blank" rel="noopener">פתח מסלול</a></div></div></div>
+          <div class="timeline-item"><div class="time">15:00</div><div class="activity"><strong>צ׳ק-אין (כניסה מ-15:00)</strong><p>חדר מומלץ: Suite Smeralda בזכות הג׳קוזי הפרטי והגישה הישירה לחוף, או Rooftop Suite למרפסת עם נוף הים החזק ביותר.</p></div></div>
+          <div class="timeline-item"><div class="time">15:45</div><div class="activity"><strong>בריכה, ספא ומנוחה</strong><p>ללא נסיעות נוספות. שמרו לפחות שלוש שעות פנויות לחלוטין.</p></div></div>
+          <div class="timeline-item"><div class="time">19:30</div><div class="activity"><strong>אפריטיף בשקיעה</strong><p>צלמו את המרפסת ואת שקיעת Baja Sardinia לפני שהשירות מתמלא.</p></div></div>
+          <div class="timeline-item"><div class="time">20:15</div><div class="activity"><strong>ארוחת ערב · Capogiro (כוכב מישלן 2026)</strong><p>אירוח עטור כוכב מישלן במלון, תלוי בין ים לשמיים. ללא צורך בהסעה.</p></div></div>
+          <div class="timeline-item"><div class="time">22:30</div><div class="activity"><strong>שינה</strong><p>הכינו את הסאפ וערכת מצלמה קטנה לסירה של הבוקר.</p></div></div>
+        </div>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <small>יום שני · 22 ביוני</small>
+          <h3>Cala Coticcio — יום סירה פרטי (צפון)</h3>
+          <p>יציאה מוקדמת לסירה פרטית בארכיפלג La Maddalena, וחזרה לאותו בסיס ב-7Pines.</p>
+          <div class="checkinout"><span>לינה: 7Pines (לילה 2)</span></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="time">07:00</div><div class="activity"><strong>השכמה וארוחת בוקר</strong><p>קחו מצלמת אקשן, מסנן פולרייזר, נעלי מים, תיק יבש וסאפ מנופח רק אם מפעיל הסירה מאשר.</p></div></div>
+          <div class="timeline-item"><div class="time">08:00</div><div class="activity"><strong>מפגש עם הסירה (Palau / דרך הקונסיירז׳ של 7Pines)</strong><p>בקשו סירת RIB פרטית מורשית עם דגש על Cala Coticcio. נקודות יציאה אפשריות: Palau, Cannigione, Poltu Quatu או Porto Cervo.</p></div></div>
+          <div class="timeline-item"><div class="time">08:30</div><div class="activity"><strong>מפגש צילום ב-Cala Coticcio</strong><p>צילום בגובה המים וצילומי חרטום. רחפנים אסורים בפארק הלאומי La Maddalena, ואסור להתקרב מעבר ל-50 מ׳ מהחוף.</p></div></div>
+          <div class="timeline-item"><div class="time">12:30</div><div class="activity"><strong>חזרה, מקלחת וארוחת צהריים קלה</strong><p>ארוחת צהריים ב-Cone Club או Spazio. שמרו על פחות משעה.</p></div></div>
+          <div class="timeline-item"><div class="time">14:30</div><div class="activity"><strong>בריכה / חוף / Costa Smeralda</strong><p>אחר צהריים רגוע לתוכן זוגי או למנוחה.</p></div></div>
+          <div class="timeline-item"><div class="time">20:00</div><div class="activity"><strong>ארוחת ערב · Cone Club (חוף 7Pines)</strong><p>ערב חוף נינוח. חלופה: שקיעה ב-Phi Beach. ראו כפתור החלופות (i) בכרטיס המסעדה.</p></div></div>
+        </div>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <small>יום שלישי · 23 ביוני</small>
+          <h3>7Pines → לגונת San Teodoro → Baglioni</h3>
+          <p>גלישה דרומה: עצירת פלמינגו בלגונה בדרך, ואז צ׳ק-אין למלון היוקרה השני לשני לילות.</p>
+          <div class="checkinout"><span>צ׳ק-אאוט 7Pines: עד 11:00</span><span>צ׳ק-אין Baglioni: מ-15:00</span></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="time">09:00</div><div class="activity"><strong>ארוחת בוקר נינוחה</strong><p>יום מעבר רגוע, ללא שעון מעורר מוקדם.</p></div></div>
+          <div class="timeline-item"><div class="time">11:00</div><div class="activity"><strong>צ׳ק-אאוט מ-7Pines (עד 11:00)</strong><p>טעינת הרכב ויציאה דרומה.</p></div></div>
+          <div class="timeline-item"><div class="time">11:15</div><div class="activity"><strong>נסיעה ללגונת San Teodoro</strong><span class="drive">כ-1:00 שעה</span><div class="btn-row"><a class="btn small primary" href="https://www.google.com/maps/dir/?api=1&origin=7Pines%20Resort%20Sardinia&destination=Stagno%20di%20San%20Teodoro&travelmode=driving" target="_blank" rel="noopener">פתח מסלול</a></div></div></div>
+          <div class="timeline-item"><div class="time">12:30</div><div class="activity"><strong>לגונת San Teodoro (פלמינגו)</strong><p>הקצו 60–75 דקות. סירה נמוכה מודרכת אם התזמון מאושר; אחרת נקודות תצפית מסומנות ועדשת טלפוטו.</p></div></div>
+          <div class="timeline-item"><div class="time">14:00</div><div class="activity"><strong>ארוחת צהריים קלה ליד San Teodoro</strong></div></div>
+          <div class="timeline-item"><div class="time">15:00</div><div class="activity"><strong>צ׳ק-אין ל-Baglioni Resort Sardinia (כניסה מ-15:00)</strong><p>אם מגיעים לפני 15:00 — אפשר להשאיר מזוודות ולהשתמש במתקנים. חדר מומלץ: Sea View Suite או Rooftop Terrace Suite.</p></div></div>
+          <div class="timeline-item"><div class="time">16:00</div><div class="activity"><strong>בריכה, חוף Lu Impostu ו-Tavolara</strong><p>מנוחה + צילומי שקיעה מול אי Tavolara.</p></div></div>
+          <div class="timeline-item"><div class="time">20:30</div><div class="activity"><strong>ארוחת ערב · Gusto by Sadler (כוכב מישלן)</strong><p>ארוחה עטורת כוכב מישלן בריזורט. חלופות: Ruia (בריזורט) או Il Portolano מול Tavolara — ראו כפתור (i).</p></div></div>
+        </div>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <small>יום רביעי · 24 ביוני</small>
+          <h3>מפרץ Orosei — Cala Luna + Cala Goloritzé</h3>
+          <p>יום סירה מלא ממרינת Cala Gonone, וחזרה ללינה השנייה ב-Baglioni.</p>
+          <div class="checkinout"><span>לינה: Baglioni (לילה 2)</span></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="time">06:15</div><div class="activity"><strong>השכמה וארוחת בוקר מוקדמת</strong><p>בקשו ארוחת בוקר מוקדמת או קופסה בערב הקודם.</p></div></div>
+          <div class="timeline-item"><div class="time">06:40</div><div class="activity"><strong>נסיעה למרינת Cala Gonone</strong><p>הירידה האחרונה ל-Cala Gonone מפותלת. אל תצאו מאוחר מדי.</p><span class="drive">כ-1:15–1:25 · בערך 83 ק״מ</span><div class="btn-row"><a class="btn small primary" href="https://www.google.com/maps/dir/?api=1&origin=Baglioni%20Resort%20Sardinia&destination=Porto%20di%20Cala%20Gonone&travelmode=driving" target="_blank" rel="noopener">פתח מסלול</a></div></div></div>
+          <div class="timeline-item"><div class="time">08:05</div><div class="activity"><strong>חניה ופגישה עם הסקיפר</strong><p>הקצו זמן לפריקת הסאפ המקופל וציוד הצילום.</p></div></div>
+          <div class="timeline-item"><div class="time">08:30</div><div class="activity"><strong>יציאת סירת RIB פרטית (Dovesesto)</strong><p>סדר נדרש: קודם Cala Luna, ואז דרום מפרץ Orosei ל-Cala Goloritzé.</p></div></div>
+          <div class="timeline-item"><div class="time">09:00</div><div class="activity"><strong>צילומי גיבור בסאפ ב-Cala Luna</strong><p>אדם חותר במקביל לפתחי המערות בעוד הרחפן עולה לחשוף את הצוקים.</p></div></div>
+          <div class="timeline-item"><div class="time">11:15</div><div class="activity"><strong>צילומי מים טורקיז בצהריים</strong><p>סביב Piscine di Venere או Cala Mariolu אם תנאי הים מאפשרים.</p></div></div>
+          <div class="timeline-item"><div class="time">13:00</div><div class="activity"><strong>ארוחת צהריים קלה על הסירה</strong><p>בקשו מראש פירות, מים וארוחה קרה.</p></div></div>
+          <div class="timeline-item"><div class="time">14:00</div><div class="activity"><strong>Cala Goloritzé</strong><p>צלמו מחוץ לקו המצופים. סאפ רק לאחר אישור הסקיפר לאזור המותר.</p></div></div>
+          <div class="timeline-item"><div class="time">17:00</div><div class="activity"><strong>חזרה ל-Cala Gonone</strong></div></div>
+          <div class="timeline-item"><div class="time">17:20</div><div class="activity"><strong>נסיעה חזרה ל-Baglioni</strong><span class="drive">כ-1:15–1:25</span><div class="btn-row"><a class="btn small primary" href="https://www.google.com/maps/dir/?api=1&origin=Porto%20di%20Cala%20Gonone&destination=Baglioni%20Resort%20Sardinia&travelmode=driving" target="_blank" rel="noopener">פתח מסלול</a></div></div></div>
+          <div class="timeline-item"><div class="time">20:00</div><div class="activity"><strong>ארוחת ערב · Il Portolano (מול Tavolara)</strong><p>פירות ים ממדריך מישלן על קו החוף. שמרו על ערב מוקדם — יש השכמה מוקדמת מחר. חלופה נוחה: Ruia בריזורט. ראו כפתור (i).</p></div></div>
+          <div class="timeline-item"><div class="time">22:30</div><div class="activity"><strong>אריזה ושינה מוקדמת</strong><p>הכול ארוז, החשבון סגור, קופסת ארוחת בוקר מוכנה — מחר יוצאים ב-04:40.</p></div></div>
+        </div>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <small>יום חמישי · 25 ביוני</small>
+          <h3>השכמה מוקדמת → נמל התעופה קליארי (טיסת 11:00)</h3>
+          <p>היציאה המוקדמת היא המחיר של שמירה על שני מלונות יוקרה בצפון.</p>
+          <div class="checkinout"><span>צ׳ק-אאוט Baglioni: מוקדם (~04:40) — תאמו מראש</span></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="time">04:20</div><div class="activity"><strong>השכמה</strong><p>הכול חייב להיות ארוז מהלילה הקודם.</p></div></div>
+          <div class="timeline-item"><div class="time">04:40</div><div class="activity"><strong>יציאה מ-Baglioni Resort Sardinia</strong><span class="drive">כ-3:10 שעות · בערך 251 ק״מ</span><div class="btn-row"><a class="btn small primary" href="https://www.google.com/maps/dir/?api=1&origin=Baglioni%20Resort%20Sardinia&destination=Cagliari%20Elmas%20Airport&travelmode=driving" target="_blank" rel="noopener">פתח מסלול</a></div></div></div>
+          <div class="timeline-item"><div class="time">08:00</div><div class="activity"><strong>תדלוק ליד שדה התעופה</strong><p>צלמו את מד הדלק ואת חזית הרכב.</p></div></div>
+          <div class="timeline-item"><div class="time">08:30</div><div class="activity"><strong>החזרת הרכב השכור</strong></div></div>
+          <div class="timeline-item"><div class="time">09:00</div><div class="activity"><strong>כניסה לטרמינל</strong></div></div>
+          <div class="timeline-item"><div class="time">11:00</div><div class="activity"><strong>המראת הטיסה</strong></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="dinners">
+      <h2>ארוחות ערב + חלופות</h2>
+      <p class="lead">לכל מסעדה יש כפתור מידע (i) בפינה — לחיצה פותחת חלופות מומלצות באזור, עם קישורי טלפון, אתר ו-Google Maps.</p>
+
+      <div class="dinner-grid">
+        <article class="card dinner-card">
+          <div class="dinner-head"><small>21 ביוני · 7Pines</small><h3>Capogiro</h3>
+            <button class="info-toggle" type="button" aria-expanded="false" aria-controls="alt-capogiro" aria-label="הצג חלופות ל-Capogiro">i</button>
+          </div>
+          <div class="alt-panel" id="alt-capogiro">
+            <div class="alt-inner">
+              <strong>חלופות באזור Baja Sardinia / Costa Smeralda</strong>
+              <div class="alt-item"><h5>Phi Beach — Luciano's / Nammos</h5><p class="alt-note">מועדון שקיעה איקוני על הסלעים ב-Baja Sardinia, מטבח ים-תיכוני.</p><div class="alt-links"><a href="https://phibeach.com/" target="_blank" rel="noopener">אתר</a><a href="https://www.google.com/maps/search/?api=1&query=Phi%20Beach%20Baja%20Sardinia" target="_blank" rel="noopener">Google Maps</a></div></div>
+              <div class="alt-item"><h5>Spazio by Franco Pepe (בריזורט)</h5><p class="alt-note">פיצה של הפיצאיולו הטוב בעולם, ליד הבריכה. 18:30–23:00.</p><div class="alt-links"><a href="tel:+3907891775000">+39 0789 1775000</a><a href="https://7pines-sardinia.com/en/dining" target="_blank" rel="noopener">אתר</a></div></div>
+              <div class="alt-item"><h5>Rocca Beach Experience</h5><p class="alt-note">פירות ים על החוף מול ארכיפלג La Maddalena.</p><div class="alt-links"><a href="https://www.roccabeachexperience.com/en-gb" target="_blank" rel="noopener">אתר</a><a href="https://www.google.com/maps/search/?api=1&query=Rocca%20Beach%20Experience%20Baja%20Sardinia" target="_blank" rel="noopener">Google Maps</a></div></div>
+            </div>
+          </div>
+          <div class="dinner-body">
+            <p>אירוח עטור כוכב מישלן 2026 על מרפסת פנורמית עם אחד מנופי השקיעה החזקים ב-Baja Sardinia.</p>
+            <div class="dinner-tags"><span>כוכב מישלן 2026</span><span>מרפסת שקיעה</span><span>ללא הסעה</span><span>€€€€</span></div>
+            <div class="film-plan"><strong>צילום:</strong> חשיפת המרפסת, שקיעה מעל המים, בן/בת הזוג ליד השולחן וצילומי אוכל מוגש מקרוב.</div>
+            <div class="contact-line">טלפון המלון: <a href="tel:+3907891775000">+39 0789 1775000</a></div>
+            <div class="btn-row"><a class="btn primary" href="https://7pines-sardinia.com/en/dining/capogiro" target="_blank" rel="noopener">להזמנה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Capogiro%20Restaurant%207Pines%20Sardinia" target="_blank" rel="noopener">מפות Google</a></div>
+          </div>
+        </article>
+
+        <article class="card dinner-card">
+          <div class="dinner-head"><small>22 ביוני · 7Pines</small><h3>Cone Club</h3>
+            <button class="info-toggle" type="button" aria-expanded="false" aria-controls="alt-cone" aria-label="הצג חלופות ל-Cone Club">i</button>
+          </div>
+          <div class="alt-panel" id="alt-cone">
+            <div class="alt-inner">
+              <strong>חלופות לערב יום הסירה</strong>
+              <div class="alt-item"><h5>Phi Beach — Luciano's / Nammos</h5><p class="alt-note">חוויית שקיעה ומוזיקה ב-Baja Sardinia, אם רוצים ערב תוסס יותר.</p><div class="alt-links"><a href="https://phibeach.com/" target="_blank" rel="noopener">אתר</a><a href="https://www.google.com/maps/search/?api=1&query=Phi%20Beach%20Baja%20Sardinia" target="_blank" rel="noopener">Google Maps</a></div></div>
+              <div class="alt-item"><h5>Capogiro (כוכב מישלן, בריזורט)</h5><p class="alt-note">אם מעדיפים ערב fine dining שני במלון.</p><div class="alt-links"><a href="tel:+3907891775000">+39 0789 1775000</a><a href="https://7pines-sardinia.com/en/dining/capogiro" target="_blank" rel="noopener">אתר</a></div></div>
+              <div class="alt-item"><h5>Spazio by Franco Pepe (בריזורט)</h5><p class="alt-note">ערב פיצה נינוח אחרי יום ים ארוך.</p><div class="alt-links"><a href="tel:+3907891775000">+39 0789 1775000</a><a href="https://7pines-sardinia.com/en/dining" target="_blank" rel="noopener">אתר</a></div></div>
+            </div>
+          </div>
+          <div class="dinner-body">
+            <p>מסעדת חוף של 7Pines מול ארכיפלג La Maddalena — בחירה נינוחה אחרי יום הסירה ב-Cala Coticcio.</p>
+            <div class="dinner-tags"><span>על החוף</span><span>פירות ים</span><span>נינוח</span><span>€€€</span></div>
+            <div class="film-plan"><strong>צילום:</strong> רגליים בחול, שקיעה, פלאטו של דגים נאים ומשקאות בשעת הזהב.</div>
+            <div class="contact-line">טלפון המלון: <a href="tel:+3907891775000">+39 0789 1775000</a></div>
+            <div class="btn-row"><a class="btn primary" href="https://cone-club.com/en/food" target="_blank" rel="noopener">אתר Cone Club</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Cone%20Club%207Pines%20Sardinia" target="_blank" rel="noopener">מפות Google</a></div>
+          </div>
+        </article>
+
+        <article class="card dinner-card">
+          <div class="dinner-head"><small>23 ביוני · Baglioni</small><h3>Gusto by Sadler</h3>
+            <button class="info-toggle" type="button" aria-expanded="false" aria-controls="alt-gusto" aria-label="הצג חלופות ל-Gusto by Sadler">i</button>
+          </div>
+          <div class="alt-panel" id="alt-gusto">
+            <div class="alt-inner">
+              <strong>חלופות באזור San Teodoro / Puntaldia</strong>
+              <div class="alt-item"><h5>Ruia (בריזורט Baglioni)</h5><p class="alt-note">מסעדת à la carte איטלקית/ים-תיכונית של המלון (לא רק הבופה Mirto).</p><div class="alt-links"><a href="tel:+3907841896390">+39 0784 1896390</a><a href="https://sardinia.baglionihotels.com/" target="_blank" rel="noopener">אתר</a></div></div>
+              <div class="alt-item"><h5>Il Portolano — Porto San Paolo</h5><p class="alt-note">פירות ים ממדריך מישלן ישירות מול אי Tavolara (~15–20 דק׳).</p><div class="alt-links"><a href="tel:+39078940670">+39 0789 40670</a><a href="https://www.ristoranteilportolano.it/?lang=en" target="_blank" rel="noopener">אתר</a><a href="https://www.google.com/maps/search/?api=1&query=Ristorante%20Il%20Portolano%20Porto%20San%20Paolo" target="_blank" rel="noopener">Google Maps</a></div></div>
+              <div class="alt-item"><h5>Pentumas — Puntaldia</h5><p class="alt-note">fine dining עם נוף לים בפיאצטה של Puntaldia.</p><div class="alt-links"><a href="tel:+393426202381">+39 342 620 2381</a><a href="https://www.google.com/maps/search/?api=1&query=Ristorante%20Pentumas%20Puntaldia" target="_blank" rel="noopener">Google Maps</a></div></div>
+              <div class="alt-item"><h5>Blue Moon — Due Lune Puntaldia</h5><p class="alt-note">ארוחת ערב גורמה אלגנטית בריזורט הגולף.</p><div class="alt-links"><a href="tel:+390784864075">+39 0784 864075</a><a href="https://www.duelune.com/en/restaurant-gourmet-puntaldia-sardinia.html" target="_blank" rel="noopener">אתר</a></div></div>
+            </div>
+          </div>
+          <div class="dinner-body">
+            <p>מסעדה עטורת כוכב מישלן בריזורט Baglioni, מאת השף קלאודיו סדלר. פתוחה 1 ביוני–30 בספטמבר.</p>
+            <div class="dinner-tags"><span>כוכב מישלן</span><span>מטבח מודרני</span><span>ללא הסעה</span><span>€€€€</span></div>
+            <div class="film-plan"><strong>צילום:</strong> אדריכלות המסעדה, הגשת תפריט הטעימות וצילומי מנות מדויקים מקרוב.</div>
+            <div class="contact-line">הזמנת מסעדה: <a href="tel:+3907841908964">+39 0784 1908964</a></div>
+            <div class="contact-line">דוא״ל: <a href="mailto:gustosardinia@baglionihotels.com?subject=Dinner%2023%20June%202026">gustosardinia@baglionihotels.com</a></div>
+            <div class="btn-row"><a class="btn primary" href="https://sardinia.baglionihotels.com/dining/gusto-by-sadler" target="_blank" rel="noopener">להזמנה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Gusto%20by%20Sadler%20Baglioni%20Resort%20Sardinia" target="_blank" rel="noopener">מפות Google</a></div>
+          </div>
+        </article>
+
+        <article class="card dinner-card">
+          <div class="dinner-head"><small>24 ביוני · מול Tavolara</small><h3>Il Portolano</h3>
+            <button class="info-toggle" type="button" aria-expanded="false" aria-controls="alt-portolano" aria-label="הצג חלופות ל-Il Portolano">i</button>
+          </div>
+          <div class="alt-panel" id="alt-portolano">
+            <div class="alt-inner">
+              <strong>חלופות לערב האחרון (לפני ההשכמה המוקדמת)</strong>
+              <div class="alt-item"><h5>Ruia (בריזורט Baglioni)</h5><p class="alt-note">הנוחה ביותר לערב מוקדם — אוכלים בריזורט וישנים מוקדם.</p><div class="alt-links"><a href="tel:+3907841896390">+39 0784 1896390</a><a href="https://sardinia.baglionihotels.com/" target="_blank" rel="noopener">אתר</a></div></div>
+              <div class="alt-item"><h5>Gusto by Sadler (כוכב מישלן, בריזורט)</h5><p class="alt-note">אם מעדיפים את הכוכב בערב האחרון.</p><div class="alt-links"><a href="tel:+3907841908964">+39 0784 1908964</a><a href="https://sardinia.baglionihotels.com/dining/gusto-by-sadler" target="_blank" rel="noopener">אתר</a></div></div>
+              <div class="alt-item"><h5>Pentumas — Puntaldia</h5><p class="alt-note">fine dining מול שמורת Tavolara.</p><div class="alt-links"><a href="tel:+393426202381">+39 342 620 2381</a><a href="https://www.google.com/maps/search/?api=1&query=Ristorante%20Pentumas%20Puntaldia" target="_blank" rel="noopener">Google Maps</a></div></div>
+            </div>
+          </div>
+          <div class="dinner-body">
+            <p>פירות ים ממדריך מישלן על קו החוף ממש מול אי Tavolara — סיום ויזואלי חזק לערב האחרון. שמרו על ערב מוקדם בגלל ההשכמה ב-04:20.</p>
+            <div class="dinner-tags"><span>Michelin Guide</span><span>נוף ל-Tavolara</span><span>פירות ים</span><span>€€€</span></div>
+            <div class="film-plan"><strong>צילום:</strong> חשיפת קו החוף, Tavolara בשקיעה, דגים נאים, שלל היום ואווירת השולחן.</div>
+            <div class="contact-line">טלפון: <a href="tel:+39078940670">+39 0789 40670</a></div>
+            <div class="contact-line">דוא״ל: <a href="mailto:info@ristoranteilportolano.it?subject=Dinner%2024%20June%202026">info@ristoranteilportolano.it</a></div>
+            <div class="btn-row"><a class="btn primary" href="https://www.ristoranteilportolano.it/?lang=en" target="_blank" rel="noopener">להזמנה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Ristorante%20Il%20Portolano%20Porto%20San%20Paolo" target="_blank" rel="noopener">מפות Google</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="reserve">
+      <h2>לוח ההזמנות</h2>
+      <p class="lead">שני מלונות יוקרה, שני לילות בכל אחד. הודעות הבקשה המוכנות מראש נשארות באנגלית כדי שהמפעילים האיטלקיים יוכלו לקרוא אותן.</p>
+
+      <div class="reservation-grid">
+        <article class="card reservation">
+          <div class="type">מלון יוקרה 1 · 21–23 ביוני (2 לילות)</div>
+          <h3>7Pines Resort Sardinia</h3>
+          <p>ריזורט חוף עכשווי ב-Baja Sardinia עם מפרצונים מבודדים, ספא Pure Seven ומסעדת Capogiro עטורת כוכב מישלן.</p>
+          <div class="contact-line">טלפון: <a href="tel:+3907891775000">+39 0789 1775000</a></div>
+          <div class="contact-line">הזמנות: <a href="mailto:reservations.sardinia@7pines.com?subject=Stay%2021-23%20June%202026">reservations.sardinia@7pines.com</a></div>
+          <div class="contact-line">צ׳ק-אין מ-15:00 · צ׳ק-אאוט עד 11:00 (לאישור)</div>
+          <div class="btn-row"><a class="btn primary" href="https://7pines-sardinia.com/en/home" target="_blank" rel="noopener">הזמנה רשמית</a><a class="btn whatsapp" href="https://wa.me/3907891775000?text=Hello%2C%20I%20would%20like%20to%20reserve%20two%20nights%20for%20two%20adults%20at%207Pines%20Resort%20Sardinia%20from%2021%20to%2023%20June%202026.%20Preferred%20room%3A%20Suite%20Smeralda%2C%20alternatively%20a%20Rooftop%20Suite.%20We%20arrive%20by%20car%20from%20Cagliari%20around%2015%3A00%20on%2021%20June.%20Please%20also%20arrange%20an%20early%20private%20boat%20or%20licensed%20RIB%20on%2022%20June%20focused%20on%20Cala%20Coticcio%2C%20with%20permission%20to%20carry%20one%20deflated%20inflatable%20SUP%20and%20electric%20pump.%20Please%20confirm%20room%20availability%2C%20check-in%20and%20check-out%20times%2C%20total%20pricing%20and%20cancellation%20terms." target="_blank" rel="noopener">שליחת בקשה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=7Pines%20Resort%20Sardinia" target="_blank" rel="noopener">מפות Google</a></div>
+        </article>
+
+        <article class="card reservation">
+          <div class="type">מלון יוקרה 2 · 23–25 ביוני (2 לילות)</div>
+          <h3>Baglioni Resort Sardinia</h3>
+          <p>ריזורט מרשת Leading Hotels of the World לצד Lu Impostu, מול שמורת Tavolara, עם מסעדת Gusto by Sadler עטורת כוכב מישלן.</p>
+          <div class="contact-line">הזמנות / קבלה: <a href="tel:+3907841896390">+39 0784 1896390</a></div>
+          <div class="contact-line">דוא״ל: <a href="mailto:reservations.sardinia@baglionihotels.com?subject=Stay%2023-25%20June%202026">reservations.sardinia@baglionihotels.com</a></div>
+          <div class="contact-line">צ׳ק-אין מ-15:00 · צ׳ק-אאוט מוקדם מאוד ~04:40 ב-25/6 (לתאם) + קופסת ארוחת בוקר</div>
+          <div class="btn-row"><a class="btn primary" href="https://sardinia.baglionihotels.com/" target="_blank" rel="noopener">הזמנה רשמית</a><a class="btn whatsapp" href="https://wa.me/3907841896390?text=Hello%2C%20I%20would%20like%20to%20reserve%20two%20nights%20for%20two%20adults%20at%20Baglioni%20Resort%20Sardinia%20from%2023%20to%2025%20June%202026.%20Preferred%20room%3A%20Sea%20View%20Suite%2C%20alternatively%20a%20Rooftop%20Terrace%20Suite.%20We%20arrive%20in%20the%20afternoon%20of%2023%20June.%20On%2024%20June%20we%20need%20an%20early%20breakfast%20box%20for%20a%20Cala%20Gonone%20boat%20departure.%20On%2025%20June%20we%20need%20a%20very%20early%20check-out%20around%2004%3A40%20plus%20a%20breakfast%20box%20for%20our%20drive%20to%20Cagliari%20Airport%2C%20and%20we%20would%20like%20to%20settle%20the%20bill%20the%20night%20before.%20Please%20confirm%20availability%2C%20check-in%20and%20check-out%20times%20and%20total%20pricing." target="_blank" rel="noopener">שליחת בקשה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Baglioni%20Resort%20Sardinia" target="_blank" rel="noopener">מפות Google</a></div>
+        </article>
+
+        <article class="card reservation">
+          <div class="type">סירה פרטית · 22 ביוני</div>
+          <h3>Emerald Freedom — Cala Coticcio</h3>
+          <p>סירת RIB פרטית עם סקיפר בארכיפלג La Maddalena, יציאה מ-Palau/Cannigione/Porto Cervo. שימו לב: אסור להתקרב מעבר ל-50 מ׳ מחוף Cala Coticcio.</p>
+          <div class="contact-line">וואטסאפ/טלפון: <a href="tel:+393517505141">+39 351 750 5141</a></div>
+          <div class="contact-line">טלפון נוסף: <a href="tel:+393286442195">+39 328 644 2195</a></div>
+          <div class="btn-row"><a class="btn primary" href="https://www.lamaddalenaprivateboat.com/en/contacts/" target="_blank" rel="noopener">אתר הסיור</a><a class="btn whatsapp" href="https://wa.me/393517505141?text=Hello%2C%20we%20are%20two%20adults%20and%20would%20like%20a%20private%20RIB%20with%20skipper%20to%20Cala%20Coticcio%20(Caprera)%2C%20La%20Maddalena%20Archipelago%2C%20on%2022%20June%202026%2C%20departing%20in%20the%20morning%20around%2008%3A30%20from%20Palau%20or%20the%20nearest%20point%20to%207Pines%20Resort%20(Baja%20Sardinia).%20We%20are%20photographers%20and%20want%20enough%20filming%20time%20and%20to%20carry%20one%20deflated%20inflatable%20SUP%20with%20electric%20pump%20for%20scale%20shots.%20Please%20confirm%20departure%20point%2C%20capacity%2C%20park%20fees%2C%20permitted%20SUP%20use%20and%20the%2050%20m%20no-approach%20rule%2C%20price%2C%20start%2Fend%20time%20and%20weather%20cancellation%20policy." target="_blank" rel="noopener">שליחת בקשה מדויקת</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Cala%20Coticcio%20Caprera" target="_blank" rel="noopener">מפות Google</a></div>
+        </article>
+
+        <article class="card reservation">
+          <div class="type">אטרקציה · 23 ביוני</div>
+          <h3>לגונת San Teodoro (Obiettivo Vacanza)</h3>
+          <p>ביקור פלמינגו מודרך בלגונה, בדרך דרומה מ-7Pines ל-Baglioni.</p>
+          <div class="contact-line">משרד: <a href="tel:+390784867109">+39 0784 867109</a></div>
+          <div class="contact-line">דוא״ל: <a href="mailto:info@santeodoro.com?subject=San%20Teodoro%20Lagoon%2023%20June%202026">info@santeodoro.com</a></div>
+          <div class="btn-row"><a class="btn primary" href="https://www.santeodoro.com/en/about-us" target="_blank" rel="noopener">יצירת קשר רשמית</a><a class="btn whatsapp" href="https://wa.me/390784867109?text=Hello%2C%20we%20are%20two%20adults%20and%20would%20like%20the%20shortest%20guided%20San%20Teodoro%20Lagoon%20experience%20on%2023%20June%202026%2C%20ideally%20early%20afternoon.%20We%20are%20photographers%20and%20mainly%20want%20flamingo%20and%20landscape%20views.%20Please%20confirm%20the%20exact%20meeting%20point%2C%20departure%20time%2C%20duration%20and%20price." target="_blank" rel="noopener">בקשת שעה</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Stagno%20di%20San%20Teodoro" target="_blank" rel="noopener">מפות Google</a></div>
+        </article>
+
+        <article class="card reservation">
+          <div class="type">סירת RIB פרטית · 24 ביוני</div>
+          <h3>Dovesesto Charter — Cala Gonone</h3>
+          <p>יום סירה מלא במפרץ Orosei: Cala Luna ו-Cala Goloritzé. ~30 שנות ניסיון, יציאה ממרינת Cala Gonone.</p>
+          <div class="contact-line">וואטסאפ/טלפון: <a href="tel:+393497710377">+39 349 771 0377</a></div>
+          <div class="contact-line">דלפק הנמל: <a href="tel:+39078493451">+39 0784 93451</a></div>
+          <div class="contact-line">דוא״ל: <a href="mailto:booking@dovesesto.it?subject=Private%20RIB%2024%20June%202026">booking@dovesesto.it</a></div>
+          <div class="btn-row"><a class="btn primary" href="https://www.dovesesto.it/en/dinghy-excursions-cala-gonone" target="_blank" rel="noopener">אתר הסיור</a><a class="btn whatsapp" href="https://wa.me/393497710377?text=Hello%2C%20we%20are%20two%20adults%20and%20would%20like%20a%20private%20RIB%20with%20skipper%20from%20Cala%20Gonone%20on%2024%20June%202026%20at%2008%3A30.%20Priority%20route%3A%20Cala%20Luna%20first%2C%20then%20Piscine%20di%20Venere%20or%20Cala%20Mariolu%20if%20time%20allows%2C%20and%20Cala%20Goloritze.%20We%20need%20enough%20filming%20time%20and%20want%20to%20carry%20one%20deflated%20inflatable%20SUP%20with%20electric%20pump%20for%20scale%20shots.%20Please%20confirm%20capacity%2C%20permitted%20SUP%20launch%20areas%2C%20buoy%20and%20landing%20restrictions%2C%20price%2C%20start%2Fend%20time%20and%20weather%20cancellation%20policy." target="_blank" rel="noopener">שליחת בקשה מדויקת</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dovesesto%20Charter%20Cala%20Gonone" target="_blank" rel="noopener">מפות Google</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sup">
+      <h2>תוכנית צילום סאפ</h2>
+      <p class="lead">סאפ מתנפח אחד מספיק. שמרו אותו מקופל במהלך ההסעות ובקשו משני מפעילי הסירות לאשר את מידותיו, המשאבה ונוהל ההשקה לפני התשלום.</p>
+      <div class="sup-table-wrap">
+        <table>
+          <thead><tr><th>מיקום</th><th>להשתמש בסאפ?</th><th>צילום קנה מידה מומלץ</th><th>מגבלה קריטית</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cala Coticcio</strong></td><td><span class="maybe">אופציונלי</span></td><td>אדם חותר לצד ה-RIB, מצולם מהסירה או ממצלמת אקשן.</td><td>אין רחפן בפארק הלאומי La Maddalena. אסור להתקרב מעבר ל-50 מ׳ מהחוף. המפעיל חייב לאשר סאפ.</td></tr>
+            <tr><td><strong>לגונת San Teodoro</strong></td><td><span class="no">לא</span></td><td>אדם על השביל המסומן או סירה שטוחת תחתית מודרכת לקנה מידה.</td><td>ביצה רדודה מוגנת ובית גידול לציפורים. אל תשיקו באופן עצמאי.</td></tr>
+            <tr><td><strong>Cala Luna</strong></td><td><span class="yes">כן — עדיפות</span></td><td>אדם חותר במקביל למערות הים בעוד הרחפן עולה לחשוף את הצוק.</td><td>השיקו רק במים רגועים ורחוק מתנועת נחיתת סירות הנוסעים.</td></tr>
+            <tr><td><strong>Cala Goloritzé</strong></td><td><span class="maybe">מותנה</span></td><td>אדם על סאפ מחוץ לקו המצופים עם הצריח והקשת ברקע.</td><td>סירות מנוע נשארות כ-300 מ׳ מהחוף. אשרו אם סאפ ידני רשאי לחצות את קו המצופים והאם נדרש אישור נחיתה.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert success">
+        <strong>ציוד מומלץ</strong>
+        סאפ מתנפח לטיולים, משאבה חשמלית עם מתאם 12V, משאבה ידנית לגיבוי, רצועת מותן עם שחרור מהיר, אפוד הצלה (PFD), תיק יבש, לבוש בהיר וניטרלי ונרתיק עמיד למים לרדיו/טלפון.
+      </div>
+    </section>
+
+    <section id="locations">
+      <h2>מיקומים, גישה וגלריות תמונות</h2>
+      <p class="lead">הקישו על תמונה לצפייה במסך מלא. התמונות להמחשה ונטענות מ-Wikimedia Commons.</p>
+
+      <article class="card location">
+        <div class="location-body">
+          <div class="location-kicker">22 ביוני · סירה פרטית</div>
+          <h3>Cala Coticcio</h3>
+          <p>הגישה המהירה ביותר היא סירת RIB פרטית מאזור Palau. היא חוסכת את המעבורת, הנסיעה ל-Caprera ואת מסלול ההליכה המוסדר.</p>
+          <div class="detail-grid">
+            <div class="detail"><strong>גישה מהירה ביותר</strong><p>סירת RIB פרטית. בקשו מ-Emerald Freedom איסוף מ-Palau או מהנקודה הקרובה ביותר ל-7Pines.</p></div>
+            <div class="detail"><strong>זמן נסיעה</strong><p>כ-25–30 דקות בסירה מהירה מ-Palau, תלוי ברוח ובמסלול.</p></div>
+            <div class="detail"><strong>נושא קנה מידה</strong><p>בן/בת הזוג על החרטום, בשחייה ליד הסירה או על הסאפ אם אושר.</p></div>
+            <div class="detail"><strong>רחפן</strong><p>אין להטיס. הפארק הלאומי אוסר במפורש רחפנים בשטח הפארק.</p></div>
+          </div>
+          <div class="shot-list"><strong>הצילומים המומלצים</strong><ul><li>חשיפה בגובה המים דרך הגרניט הוורוד.</li><li>אדם על החרטום נכנס לאגן הטורקיז.</li><li>צילום אקשן ממבט על ממוט או מהסירה, כתחליף לצילומי רחפן.</li></ul></div>
+          <div class="btn-row">
+            <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Cala%20Coticcio%20Caprera" target="_blank" rel="noopener">מפת Cala Coticcio</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Porto%20Turistico%20Palau" target="_blank" rel="noopener">מרינת Palau</a>
+          </div>
+        </div>
+        <div class="gallery">
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Coticcio.jpg?width=1400" aria-label="פתיחת תמונה: המפרצונים הטורקיזים של Cala Coticcio">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Coticcio.jpg?width=1400" alt="המפרצונים הטורקיזים של Cala Coticcio" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>המפרצונים הטורקיזים של Cala Coticcio</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Coticcio.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Coticcio%20-%20Isola%20di%20Caprera%20-%20Sardegna.jpg?width=1400" aria-label="פתיחת תמונה: גרניט ורוד ומים צלולים">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Coticcio%20-%20Isola%20di%20Caprera%20-%20Sardegna.jpg?width=1400" alt="גרניט ורוד ומים צלולים" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>גרניט ורוד ומים צלולים</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Coticcio_-_Isola_di_Caprera_-_Sardegna.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/La%20Maddalena%203%20-%20Thaiti.JPG?width=1400" aria-label="פתיחת תמונה: המפרצון המכונה Tahiti">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/La%20Maddalena%203%20-%20Thaiti.JPG?width=1400" alt="המפרצון המכונה Tahiti" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>המפרצון המכונה Tahiti</span><a href="https://commons.wikimedia.org/wiki/File:La_Maddalena_3_-_Thaiti.JPG" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Sentiero%20per%20Cala%20Coticcio%2C%2007024%20La%20Maddalena%20OT%2C%20Italy%20-%20panoramio.jpg?width=1400" aria-label="פתיחת תמונה: הנוף הטרשי מעל Cala Coticcio">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sentiero%20per%20Cala%20Coticcio%2C%2007024%20La%20Maddalena%20OT%2C%20Italy%20-%20panoramio.jpg?width=1400" alt="הנוף הטרשי מעל Cala Coticcio" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>הנוף הטרשי מעל Cala Coticcio</span><a href="https://commons.wikimedia.org/wiki/File:Sentiero_per_Cala_Coticcio%2C_07024_La_Maddalena_OT%2C_Italy_-_panoramio.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        </div>
+      </article>
+
+      <article class="card location">
+        <div class="location-body">
+          <div class="location-kicker">23 ביוני · עצירה בדרך דרומה</div>
+          <h3>לגונת San Teodoro</h3>
+          <p>שמורת ביצה מאחורי La Cinta, מתאימה לפלמינגו, השתקפויות ותוכן בעדשה ארוכה ולא לצילומי רחפן או סאפ.</p>
+          <div class="detail-grid">
+            <div class="detail"><strong>גישה מהירה ביותר</strong><p>חנו בנקודת היציאה המאושרת של הסיור המודרך או בנקודת התצפית של הלגונה. בקשו את נקודת המפגש המדויקת.</p></div>
+            <div class="detail"><strong>זמן נסיעה</strong><p>כשעה מ-7Pines, ואז כ-10 דקות נוספות ל-Baglioni.</p></div>
+            <div class="detail"><strong>עדשה מומלצת</strong><p>טלפוטו 200–600 מ״מ או דומה. הפלמינגו עשויים להיות רחוקים.</p></div>
+            <div class="detail"><strong>סאפ/רחפן</strong><p>אין סאפ עצמאי בלגונה. התייחסו לרחפן כמוגבל עד אימות נקודת D-Flight המדויקת.</p></div>
+          </div>
+          <div class="shot-list"><strong>הצילומים המומלצים</strong><ul><li>בן/בת הזוג על השביל המסומן עם פלמינגו דחוסים ברקע.</li><li>השתקפויות מהסירה הנמוכה המודרכת.</li><li>ההפרדה הצרה של La Cinta בין הלגונה לים.</li></ul></div>
+          <div class="btn-row">
+            <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Stagno%20di%20San%20Teodoro" target="_blank" rel="noopener">מפת הלגונה</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Spiaggia%20La%20Cinta%20San%20Teodoro" target="_blank" rel="noopener">מפת La Cinta</a>
+          </div>
+        </div>
+        <div class="gallery">
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Stagno%20di%20San%20Teodoro.jpg?width=1400" aria-label="פתיחת תמונה: ביצות לגונת San Teodoro">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stagno%20di%20San%20Teodoro.jpg?width=1400" alt="ביצות לגונת San Teodoro" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>ביצות לגונת San Teodoro</span><a href="https://commons.wikimedia.org/wiki/File:Stagno_di_San_Teodoro.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/La%20Cinta%20-%20panoramio%20%281%29.jpg?width=1400" aria-label="פתיחת תמונה: La Cinta בין הים ללגונה">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/La%20Cinta%20-%20panoramio%20%281%29.jpg?width=1400" alt="La Cinta בין הים ללגונה" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>La Cinta בין הים ללגונה</span><a href="https://commons.wikimedia.org/wiki/File:La_Cinta_-_panoramio_%281%29.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama%20san%20teodoro%20%282357671725%29.jpg?width=1400" aria-label="פתיחת תמונה: פנורמה חופית של San Teodoro">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama%20san%20teodoro%20%282357671725%29.jpg?width=1400" alt="פנורמה חופית של San Teodoro" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>פנורמה חופית של San Teodoro</span><a href="https://commons.wikimedia.org/wiki/File:Panorama_san_teodoro_%282357671725%29.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        </div>
+      </article>
+
+      <article class="card location">
+        <div class="location-body">
+          <div class="location-kicker">24 ביוני · עצירת הסירה הראשונה</div>
+          <h3>Cala Luna</h3>
+          <p>המפרץ הגדול הקרוב ביותר ל-Cala Gonone והמיקום הטוב ביותר לסאפ במסלול. המערות, עיקול החוף וקיר הגיר הופכים את האדם לקריא מיד בקנה מידה.</p>
+          <div class="detail-grid">
+            <div class="detail"><strong>גישה מהירה ביותר</strong><p>סירת RIB מהירה פרטית ממרינת Cala Gonone. הגיעו ראשונים, לפני סירות הנוסעים הגדולות.</p></div>
+            <div class="detail"><strong>זמן נסיעה</strong><p>כ-30 דקות בסירה מ-Cala Gonone.</p></div>
+            <div class="detail"><strong>הקמת סאפ</strong><p>נפחו על הסירה לפני הכניסה למפרץ. השיקו רחוק ממסדרון נחיתת הנוסעים ושמרו משקיף על הסירה.</p></div>
+            <div class="detail"><strong>רחפן</strong><p>בדקו את D-Flight וההגבלות המקומיות בנקודת ההמראה המדויקת באותו יום.</p></div>
+          </div>
+          <div class="shot-list"><strong>רצף הגיבור</strong><ul><li>בן/בת הזוג חותר/ת במקביל לפתחי המערות.</li><li>הרחפן מתחיל נמוך מאחורי הסאפ ועולה לחשוף את הצוק.</li><li>מעבר ממבט על מצל המערה הכהה אל המים הטורקיז.</li><li>הקפה רחבה כשהסאפ בשליש התחתון לקנה מידה.</li></ul></div>
+          <div class="btn-row">
+            <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Cala%20Luna%20Sardinia" target="_blank" rel="noopener">מפת Cala Luna</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Porto%20di%20Cala%20Gonone" target="_blank" rel="noopener">מרינת Cala Gonone</a>
+          </div>
+        </div>
+        <div class="gallery">
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna%20Grotto.jpg?width=1400" aria-label="פתיחת תמונה: מערות הים ב-Cala Luna">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna%20Grotto.jpg?width=1400" alt="מערות הים ב-Cala Luna" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>מערות הים ב-Cala Luna</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Luna_Grotto.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna%20-%20panoramio.jpg?width=1400" aria-label="פתיחת תמונה: החוף וצוקי הגיר של Cala Luna">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna%20-%20panoramio.jpg?width=1400" alt="החוף וצוקי הגיר של Cala Luna" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>החוף וצוקי הגיר של Cala Luna</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Luna_-_panoramio.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/CalaLuna20110601.jpg?width=1400" aria-label="פתיחת תמונה: העיקול הרחב של Cala Luna">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/CalaLuna20110601.jpg?width=1400" alt="העיקול הרחב של Cala Luna" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>העיקול הרחב של Cala Luna</span><a href="https://commons.wikimedia.org/wiki/File:CalaLuna20110601.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna.jpg?width=1400" aria-label="פתיחת תמונה: מים צלולים ב-Cala Luna">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Luna.jpg?width=1400" alt="מים צלולים ב-Cala Luna" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>מים צלולים ב-Cala Luna</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Luna.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        </div>
+      </article>
+
+      <article class="card location">
+        <div class="location-body">
+          <div class="location-kicker">24 ביוני · מיקום הגיבור האחרון</div>
+          <h3>Cala Goloritzé</h3>
+          <p>הצריח והקשת הטבעית מעניקים את תחושת קנה המידה החזקה ביותר במפרץ Orosei, אך הגישה מבוקרת בקפדנות.</p>
+          <div class="detail-grid">
+            <div class="detail"><strong>גישה מהירה ביותר</strong><p>המשיכו דרומה בסירת RIB פרטית אחרי Cala Luna. מ-Cala Gonone, המסלול המלא כשעה ללא עצירות ביניים.</p></div>
+            <div class="detail"><strong>הגבלת סירה</strong><p>סירות מנוע מתקרבות רק עד קו המצופים, כ-300 מטר מהחוף. אין נחיתה ישירה לחוף.</p></div>
+            <div class="detail"><strong>הקמת סאפ</strong><p>הצילום השמרני: הישארו מחוץ לקו המצופים ומקמו את האדם מול הצריח. חציה פנימה או נחיתה — באישור מראש.</p></div>
+            <div class="detail"><strong>רחפן</strong><p>בדקו את D-Flight וכללי האזור המוגן. שמרו משקיף ויזואלי על הסירה והביאו בחשבון רוח צוק חזקה.</p></div>
+          </div>
+          <div class="shot-list"><strong>רצף הגיבור</strong><ul><li>רוכב הסאפ ממורכז מתחת לצריח.</li><li>משיכה אחורה איטית החושפת את הקשת והצוק המלא.</li><li>סירה ורוכב באותו פריים ליצירת שני קני מידה.</li><li>אור צד על הגיר ולא רק מבט על אנכי.</li></ul></div>
+          <div class="btn-row">
+            <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Cala%20Goloritze%20Sardinia" target="_blank" rel="noopener">מפת Cala Goloritzé</a>
+            <a class="btn" href="https://www.costadibaunei.it/en/cala-goloritze/" target="_blank" rel="noopener">מידע גישה רשמי</a>
+          </div>
+        </div>
+        <div class="gallery">
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritz%C3%A9%20%28arco%29.jpg?width=1400" aria-label="פתיחת תמונה: הקשת הטבעית ב-Cala Goloritzé">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritz%C3%A9%20%28arco%29.jpg?width=1400" alt="הקשת הטבעית ב-Cala Goloritzé" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>הקשת הטבעית ב-Cala Goloritzé</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Goloritz%C3%A9_%28arco%29.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritze%20Sardegna.jpg?width=1400" aria-label="פתיחת תמונה: מים טורקיז וצריח הגיר">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritze%20Sardegna.jpg?width=1400" alt="מים טורקיז וצריח הגיר" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>מים טורקיז וצריח הגיר</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Goloritze_Sardegna.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Sardegna%20Cala%20Goloritze.jpg?width=1400" aria-label="פתיחת תמונה: המפרץ המוגן ממבט על">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sardegna%20Cala%20Goloritze.jpg?width=1400" alt="המפרץ המוגן ממבט על" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>המפרץ המוגן ממבט על</span><a href="https://commons.wikimedia.org/wiki/File:Sardegna_Cala_Goloritze.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritze%20o.jpg?width=1400" aria-label="פתיחת תמונה: Cala Goloritzé בחוף המזרחי של סרדיניה">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cala%20Goloritze%20o.jpg?width=1400" alt="Cala Goloritzé בחוף המזרחי של סרדיניה" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <span class="photo-error">לא ניתן לטעון את התמונה</span>
+          </button>
+          <figcaption><span>Cala Goloritzé בחוף המזרחי של סרדיניה</span><a href="https://commons.wikimedia.org/wiki/File:Cala_Goloritze_o.jpg" target="_blank" rel="noopener">מקור ורישיון</a></figcaption>
+        </figure>
+        </div>
+      </article>
+    </section>
+
+    <section id="rules">
+      <h2>כללי רחפן וגישה</h2>
+      <div class="alert danger">
+        <strong>Cala Coticcio: ללא רחפן.</strong>
+        הפארק הלאומי La Maddalena מציין במפורש שהשימוש ברחפן אסור בכל שטח הפארק. תכננו צילומי קנה מידה ללא רחפן שם, ואל תתקרבו מעבר ל-50 מ׳ מהחוף.
+      </div>
+      <div class="detail-grid">
+        <div class="detail"><strong>לפני כל טיסה</strong><p>פתחו את D-Flight בנקודת ההמראה המדויקת. בדקו גובה, שכבות אזור מוגן, הגבלות זמניות ודרישות אישור מקומיות.</p></div>
+        <div class="detail"><strong>מסירה בתנועה</strong><p>השיקו רק באישור הסקיפר, ים רגוע, אסטרטגיית נקודת בית ברורה ומשקיף ייעודי.</p></div>
+        <div class="detail"><strong>מעל חופים</strong><p>אל תטוסו מעל קהל או מתרחצים. יציאה מוקדמת ומיקום בסירה פרטית מפחיתים סיכון לחומר לא שמיש.</p></div>
+        <div class="detail"><strong>נושא הסאפ</strong><p>לבוש בהיר אך טבעי, PFD ותנועה מוסכמת מראש. הרוכב לא צריך להתמקד ברחפן ליד סלעים או תנועת סירות.</p></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn primary" href="https://www.d-flight.it/web-app/" target="_blank" rel="noopener">פתח מפת D-Flight</a>
+        <a class="btn" href="https://www.lamaddalenapark.it/" target="_blank" rel="noopener">פארק La Maddalena</a>
+        <a class="btn" href="https://www.costadibaunei.it/en/cala-goloritze/" target="_blank" rel="noopener">כללי Cala Goloritzé</a>
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2>מקורות מאומתים</h2>
+      <div class="card source-box">
+        <ul>
+          <li>מלונות: <a href="https://7pines-sardinia.com/en/contact" target="_blank">7Pines Resort Sardinia</a> ו-<a href="https://sardinia.baglionihotels.com/contact-us" target="_blank">Baglioni Resort Sardinia</a>.</li>
+          <li>סירות: <a href="https://www.lamaddalenaprivateboat.com/en/contacts/" target="_blank">Emerald Freedom (Cala Coticcio)</a> ו-<a href="https://www.dovesesto.it/en/dinghy-excursions-cala-gonone" target="_blank">Dovesesto Charter (מפרץ Orosei)</a>.</li>
+          <li>מסעדות: <a href="https://7pines-sardinia.com/en/dining/capogiro" target="_blank">Capogiro (כוכב מישלן 2026)</a>, <a href="https://guide.michelin.com/en/sardegna/san-teodoro/restaurant/gusto-by-sadler" target="_blank">Gusto by Sadler</a>, <a href="https://www.ristoranteilportolano.it/?lang=en" target="_blank">Il Portolano</a>, <a href="https://phibeach.com/" target="_blank">Phi Beach</a>, <a href="http://ristorantepentumaspuntaldia.com/" target="_blank">Pentumas</a>.</li>
+          <li>לגונת San Teodoro: <a href="https://www.santeodoro.com/en/about-us" target="_blank">Obiettivo Vacanza</a>.</li>
+          <li>גישה מוגנת: <a href="https://www.lamaddalenapark.it/" target="_blank">פארק La Maddalena</a> ו-<a href="https://www.costadibaunei.it/en/cala-goloritze/" target="_blank">Costa di Baunei</a>.</li>
+          <li>טיסות פנים בסרדיניה (לידיעה): הקו הישיר Cagliari–Olbia של Aeroitalia פועל 3 ביולי–31 באוגוסט 2026, ימי שני ושישי בלבד — ולכן אינו רלוונטי לתאריכים שלכם. החלופות הן רכבת (~3.5–4 שעות), אוטובוס או נהיגה (~3 שעות).</li>
+          <li>קובצי התמונות מתארחים ב-Wikimedia Commons; כל כרטיס גלריה מקשר למקור ולרישיון.</li>
+        </ul>
+        <p><strong>נבדק לאחרונה:</strong> 16 ביוני 2026. זמינות, שעות פתיחה, מסלולי סירה, תנאי ים, שעות צ׳ק-אין/אאוט וכללי גישה עשויים להשתנות. קבלו אישור בכתב מכל מפעיל לפני התשלום.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תמונה במסך מלא">
+    <button class="close" type="button" aria-label="סגירה">×</button>
+    <img src="" alt="">
+  </div>
+
+  <footer>
+    מסלול שני מלונות בסרדיניה (2+2) · 21–25 ביוני 2026<br>
+    נדרש חיבור לאינטרנט לתמונות, מפות חיות, שיחות, וואטסאפ והזמנות.
+  </footer>
+
+  <script>
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const image = lightbox.querySelector('img');
+      const close = lightbox.querySelector('.close');
+      document.querySelectorAll('.photo-button').forEach(button => {
+        button.addEventListener('click', () => {
+          image.src = button.dataset.full;
+          image.alt = button.getAttribute('aria-label') || 'תמונת מיקום';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      function closeLightbox() { lightbox.classList.remove('open'); image.src = ''; document.body.style.overflow = ''; }
+      close.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+      document.querySelectorAll('.info-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const panel = document.getElementById(btn.getAttribute('aria-controls'));
+          if (!panel) return;
+          const open = panel.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+    })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (() => {
+    const mapEl = document.getElementById('trip-map');
+    if (typeof L === 'undefined') {
+      if (mapEl) mapEl.innerHTML = '<div style="padding:24px;text-align:center;color:#60747a">המפה האינטראקטיבית דורשת חיבור לאינטרנט כדי לטעון את ספריית המפות (Leaflet).</div>';
+      return;
+    }
+
+    const categoryLabels = { attraction:'מיקום קולנועי', hotel:'מלון', restaurant:'מסעדה', transport:'שדה תעופה / מרינה' };
+    const categoryColors = { attraction:'#0e9f6e', hotel:'#7c4dff', restaurant:'#ef6c3a', transport:'#3b5bff' };
+
+    const spots = [
+      { id:'airport', name:'נמל התעופה קליארי (Elmas)', category:'transport', day:[1,5], lat:39.251499, lng:9.054280, emoji:'✈️', description:'נחיתה 21 ביוני 09:55 והמראה 25 ביוני 11:00. איסוף והחזרת הרכב כאן.', maps:'https://www.google.com/maps/search/?api=1&query=Cagliari%20Elmas%20Airport' },
+      { id:'seven-pines', name:'7Pines Resort Sardinia', category:'hotel', day:[1,2,3], lat:41.1283243, lng:9.4718644, emoji:'🏨', description:'מלון יוקרה 1 — 2 לילות (21–23). בסיס ליום Cala Coticcio.', maps:'https://www.google.com/maps/search/?api=1&query=7Pines%20Resort%20Sardinia' },
+      { id:'capogiro', name:'Capogiro (7Pines)', category:'restaurant', day:[1], lat:41.1289, lng:9.4724, emoji:'🍽️', description:'ארוחת שקיעה עטורת כוכב מישלן 2026.', maps:'https://www.google.com/maps/search/?api=1&query=Capogiro%20Restaurant%207Pines%20Sardinia' },
+      { id:'palau', name:'מרינת Palau', category:'transport', day:[2], lat:41.1769, lng:9.3878, emoji:'⚓', description:'נקודת יציאה לסירה הפרטית ל-Cala Coticcio.', maps:'https://www.google.com/maps/search/?api=1&query=Porto%20Turistico%20Palau' },
+      { id:'coticcio', name:'Cala Coticcio', category:'attraction', day:[2], lat:41.217778, lng:9.487222, emoji:'🌊', description:'מפרץ טורקיז ב-Caprera. אסור רחפן; אסור להתקרב מעבר ל-50 מ׳.', maps:'https://www.google.com/maps/search/?api=1&query=Cala%20Coticcio%20Caprera' },
+      { id:'lagoon', name:'לגונת San Teodoro', category:'attraction', day:[3], lat:40.795679, lng:9.670026, emoji:'🦩', description:'לגונת פלמינגו מאחורי La Cinta — עצירה בדרך דרומה.', maps:'https://www.google.com/maps/search/?api=1&query=Stagno%20di%20San%20Teodoro' },
+      { id:'baglioni', name:'Baglioni Resort Sardinia', category:'hotel', day:[3,4,5], lat:40.845632, lng:9.653796, emoji:'🏨', description:'מלון יוקרה 2 — 2 לילות (23–25). מול שמורת Tavolara.', maps:'https://www.google.com/maps/search/?api=1&query=Baglioni%20Resort%20Sardinia' },
+      { id:'gusto', name:'Gusto by Sadler (Baglioni)', category:'restaurant', day:[3], lat:40.8461, lng:9.6543, emoji:'🍽️', description:'ארוחת ערב עטורת כוכב מישלן בריזורט.', maps:'https://www.google.com/maps/search/?api=1&query=Gusto%20by%20Sadler%20Baglioni%20Resort%20Sardinia' },
+      { id:'portolano', name:'Il Portolano (Tavolara)', category:'restaurant', day:[4], lat:40.876250, lng:9.628420, emoji:'🍽️', description:'פירות ים ממדריך מישלן מול אי Tavolara — ערב 24 ביוני.', maps:'https://www.google.com/maps/search/?api=1&query=Ristorante%20Il%20Portolano%20Porto%20San%20Paolo' },
+      { id:'gonone', name:'מרינת Cala Gonone', category:'transport', day:[4], lat:40.281750, lng:9.638930, emoji:'⚓', description:'יציאת סירת RIB פרטית ל-Cala Luna ול-Cala Goloritzé.', maps:'https://www.google.com/maps/search/?api=1&query=Porto%20di%20Cala%20Gonone' },
+      { id:'cala-luna', name:'Cala Luna', category:'attraction', day:[4], lat:40.226475, lng:9.625924, emoji:'🏄', description:'מיקום צילום הסאפ העיקרי — מערות וצוקי גיר.', maps:'https://www.google.com/maps/search/?api=1&query=Cala%20Luna%20Sardinia' },
+      { id:'goloritze', name:'Cala Goloritzé', category:'attraction', day:[4], lat:40.109000, lng:9.689000, emoji:'🪨', description:'מיקום הגיבור — צריח גיר וקשת טבעית.', maps:'https://www.google.com/maps/search/?api=1&query=Cala%20Goloritze%20Sardinia' }
+    ];
+
+    const map = L.map('trip-map', { zoomControl:false, scrollWheelZoom:false, tap:true });
+    L.control.zoom({ position:'topright' }).addTo(map);
+    L.control.scale({ imperial:false, position:'bottomleft' }).addTo(map);
+
+    // Primary basemap: CARTO Voyager. If tiles fail to load, fall back to OpenStreetMap.
+    const carto = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      subdomains:'abcd', maxZoom:20,
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    });
+    let fellBack = false;
+    carto.on('tileerror', () => {
+      if (fellBack) return;
+      fellBack = true;
+      try { map.removeLayer(carto); } catch (e) {}
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:19, attribution:'&copy; OpenStreetMap contributors'
+      }).addTo(map);
+    });
+    carto.addTo(map);
+
+    const groups = { attraction:L.layerGroup().addTo(map), hotel:L.layerGroup().addTo(map), restaurant:L.layerGroup().addTo(map), transport:L.layerGroup().addTo(map) };
+    const markerByDay = {1:[],2:[],3:[],4:[],5:[]};
+
+    function markerIcon(category, emoji) {
+      return L.divIcon({ className:'', html:'<div class="marker-pin marker-' + category + '"><span>' + emoji + '</span></div>', iconSize:[36,36], iconAnchor:[18,36], popupAnchor:[0,-33] });
+    }
+
+    spots.forEach(spot => {
+      const color = categoryColors[spot.category] || '#057c8c';
+      const label = categoryLabels[spot.category] || '';
+      const popup = '<div class="map-popup"><span class="pop-tag" style="background:' + color + '">' + label + '</span><h4>' + spot.name + '</h4><p>' + spot.description + '</p><a href="' + spot.maps + '" target="_blank" rel="noopener">פתיחה ב-Google Maps ←</a></div>';
+      const marker = L.marker([spot.lat, spot.lng], { icon:markerIcon(spot.category, spot.emoji), title:spot.name }).bindPopup(popup);
+      marker.addTo(groups[spot.category]);
+      spot.day.forEach(day => markerByDay[day].push(marker));
+    });
+
+    // Schematic driving order: airport -> 7Pines -> lagoon -> Baglioni -> Cala Gonone (boat day) -> Baglioni -> airport
+    const drivingCoordinates = [
+      [39.251499,9.054280],[41.1283243,9.4718644],[40.795679,9.670026],[40.845632,9.653796],
+      [40.281750,9.638930],[40.845632,9.653796],[39.251499,9.054280]
+    ];
+    const northBoatCoordinates = [[41.1769,9.3878],[41.217778,9.487222],[41.1769,9.3878]];
+    const oroseiBoatCoordinates = [[40.281750,9.638930],[40.226475,9.625924],[40.109000,9.689000],[40.281750,9.638930]];
+
+    L.polyline(drivingCoordinates, { color:'#3b5bff', weight:3, opacity:.6, dashArray:'8 8' }).addTo(map).bindTooltip('סדר נהיגה סכמטי');
+    L.polyline(northBoatCoordinates, { color:'#0e9f6e', weight:3.5, opacity:.85, dashArray:'3 7' }).addTo(map).bindTooltip('מסלול סירה — Cala Coticcio');
+    L.polyline(oroseiBoatCoordinates, { color:'#057c8c', weight:3.5, opacity:.85, dashArray:'3 7' }).addTo(map).bindTooltip('מסלול סירה — Cala Luna + Cala Goloritzé');
+
+    const allBounds = L.latLngBounds(spots.map(s => [s.lat, s.lng]));
+    map.fitBounds(allBounds, { padding:[28,28] });
+
+    // Local HTML maps sometimes render before the container has its final size.
+    setTimeout(() => map.invalidateSize(), 200);
+    window.addEventListener('load', () => setTimeout(() => map.invalidateSize(), 120));
+
+    map.on('focus', () => map.scrollWheelZoom.enable());
+    map.on('blur', () => map.scrollWheelZoom.disable());
+
+    const filterButtons = document.querySelectorAll('.map-filter');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.category;
+        filterButtons.forEach(item => item.classList.toggle('active', item === button));
+        Object.entries(groups).forEach(([category, layer]) => {
+          const show = selected === 'all' || selected === category;
+          if (show && !map.hasLayer(layer)) map.addLayer(layer);
+          if (!show && map.hasLayer(layer)) map.removeLayer(layer);
+        });
+        const visible = selected === 'all' ? spots : spots.filter(s => s.category === selected);
+        if (visible.length) map.fitBounds(L.latLngBounds(visible.map(s => [s.lat, s.lng])), { padding:[30,30], maxZoom:12 });
+      });
+    });
+
+    document.querySelectorAll('.day-map-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const day = button.dataset.day;
+        if (day === 'all') { map.fitBounds(allBounds, { padding:[28,28] }); return; }
+        const dayMarkers = markerByDay[Number(day)] || [];
+        if (!dayMarkers.length) return;
+        Object.values(groups).forEach(layer => { if (!map.hasLayer(layer)) map.addLayer(layer); });
+        filterButtons.forEach(item => item.classList.toggle('active', item.dataset.category === 'all'));
+        map.fitBounds(L.latLngBounds(dayMarkers.map(m => m.getLatLng())), { padding:[35,35], maxZoom:11 });
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
