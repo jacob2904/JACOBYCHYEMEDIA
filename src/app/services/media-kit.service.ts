@@ -27,14 +27,14 @@ const MEDIA_KIT: MediaKitData = {
     'hidden destinations and aerial storytelling into content that travels far beyond my following.',
   heroFoot: 'Instagram Professional insights · trailing 30 days · June 2026',
   heroStats: [
-    { value: 48584, label: 'Followers' },
+    { value: 49700, label: 'Followers' },
     { value: 947, suffix: 'K', label: 'Monthly views' },
     { value: 349, suffix: 'K', label: 'Accounts reached' },
     { value: 9.6, suffix: '%', decimals: 1, label: 'Engagement rate' },
   ],
 
   glanceStats: [
-    { value: 48584, name: 'Followers', note: 'Engaged outdoor & travel community' },
+    { value: 49700, name: 'Followers', note: 'Engaged outdoor & travel community' },
     { value: 947127, name: 'Views / month', note: '~31.5K every single day' },
     { value: 349269, name: 'Accounts reached', note: '7.2× my follower base' },
     { value: 70331, name: 'Interactions', note: 'Likes, comments, shares & saves' },
@@ -48,19 +48,19 @@ const MEDIA_KIT: MediaKitData = {
     '349,269 accounts reached against 48,584 followers — every post works far harder ' +
     'than the follower number suggests.',
   donutSegments: [
-    { label: 'Reels', pct: 83.8, offset: 0, swatch: 'teal' },
-    { label: 'Stories', pct: 16.2, offset: 83.8, swatch: 'gold' },
+    { label: 'Reels', pct: 84.3, offset: 0, swatch: 'teal' },
+    { label: 'Stories', pct: 15.7, offset: 84.3, swatch: 'gold' },
     { label: 'Posts', pct: 0, offset: 100, swatch: 'dim' },
   ],
-  donutCenterValue: '83.8%',
+  donutCenterValue: '84.3%',
   donutCenterLabel: 'Reels',
 
   reels: [
-    { label: 'Reel 01', val: 115, max: 115, value: 115, suffix: 'K' },
-    { label: 'Reel 02', val: 77, max: 115, value: 77, suffix: 'K' },
-    { label: 'Reel 03', val: 53, max: 115, value: 53, suffix: 'K' },
-    { label: 'Reel 04', val: 34.7, max: 115, value: 34.7, suffix: 'K', decimals: 1 },
-    { label: 'Reel 05', val: 31, max: 115, value: 31, suffix: 'K' },
+    { label: 'Reel 01', val: 126, max: 126, value: 126, suffix: 'K' },
+    { label: 'Reel 02', val: 99, max: 126, value: 99, suffix: 'K' },
+    { label: 'Reel 03', val: 89.4, max: 126, value: 89.4, suffix: 'K', decimals: 1 },
+    { label: 'Reel 04', val: 53.4, max: 126, value: 53.4, suffix: 'K', decimals: 1 },
+    { label: 'Reel 05', val: 34.1, max: 126, value: 34.1, suffix: 'K', decimals: 1 },
   ],
   reelsCaptionPct: '97.4%',
 
