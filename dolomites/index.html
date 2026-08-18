@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1520">
+<title>Dolomites · 19–27.8.2026</title>
+<meta name="description" content="מדריך שטח לטיול צילום בדולומיטים, 19–27.8.2026 — לוז יומי, חלונות אור, מלונות, מסעדות, צ'קליסט הזמנות ומסלולי גוגל מפות.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette: alpine slate + limestone alpenglow */
+    --night:#0d1520;
+    --slate:#152131;
+    --slate-2:#1d2c40;
+    --line:#2a3d55;
+    --glacier:#e8eef5;
+    --mute:#8fa3bb;
+    --alpenglow:#e5896b;   /* golden hour / warm light */
+    --bluehour:#5b7fb8;    /* blue hour */
+    --turquoise:#4ec3ba;   /* lakes / confirmed */
+    --warn:#f0b429;
+    --danger:#e0574f;
+    --r:14px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--night);color:var(--glacier);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+    font-size:15px;line-height:1.55;
+    padding-bottom:env(safe-area-inset-bottom);
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .lat{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+  /* ---------- header ---------- */
+  header{
+    padding:22px 18px 14px;
+    background:linear-gradient(180deg,#101b28 0%,var(--night) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{font-size:11px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+  h1{
+    font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:400;
+    font-size:44px;line-height:.92;margin:6px 0 4px;letter-spacing:.02em;
+  }
+  h1 .accent{color:var(--alpenglow)}
+  .sub{font-size:13px;color:var(--mute)}
+
+  /* ---------- day tabs ---------- */
+  nav{
+    position:sticky;top:0;z-index:30;background:rgba(13,21,32,.94);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 14px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex:0 0 auto;border:1px solid var(--line);background:var(--slate);
+    color:var(--mute);border-radius:10px;padding:7px 11px 6px;cursor:pointer;
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
+    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    display:flex;flex-direction:column;align-items:center;gap:1px;min-width:52px;
+  }
+  .tab span{font-family:'Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:.05em}
+  .tab[aria-selected="true"]{background:var(--alpenglow);border-color:var(--alpenglow);color:#1a0f0a}
+  .tab.info-tab[aria-selected="true"]{background:var(--turquoise);border-color:var(--turquoise);color:#06201e}
+  .tab:focus-visible{outline:2px solid var(--turquoise);outline-offset:2px}
+
+  main{padding:16px 14px 60px;max-width:640px;margin:0 auto}
+  .day{display:none;animation:rise .35s ease both}
+  .day.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* ---------- day head ---------- */
+  .dayhead{margin-bottom:14px}
+  .dnum{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-size:30px;line-height:1;letter-spacing:.02em}
+  .dnum small{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--mute);margin-inline-start:8px;letter-spacing:0}
+  .dtitle{font-size:16px;font-weight:600;margin-top:2px}
+  .star{color:var(--warn)}
+
+  .sleep{
+    display:inline-flex;align-items:center;gap:7px;margin-top:10px;
+    background:var(--slate);border:1px solid var(--line);border-radius:999px;
+    padding:5px 12px 5px 10px;font-size:12.5px;color:var(--glacier);
+  }
+  .sleep b{font-weight:600}
+  .sleep i{font-style:normal;color:var(--turquoise);font-size:13px}
+
+  /* ---------- light strip ---------- */
+  .lightcard{
+    background:var(--slate);border:1px solid var(--line);border-radius:var(--r);
+    padding:12px 13px 10px;margin:14px 0;
+  }
+  .lightcard h3{margin:0 0 9px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600}
+  .strip{position:relative;height:26px;border-radius:6px;background:var(--slate-2);overflow:hidden}
+  .band{position:absolute;top:0;bottom:0}
+  .b-blue{background:linear-gradient(90deg,rgba(91,127,184,.25),rgba(91,127,184,.75))}
+  .b-gold{background:linear-gradient(90deg,rgba(229,137,107,.8),rgba(229,137,107,.25))}
+  .b-goldpm{background:linear-gradient(90deg,rgba(229,137,107,.25),rgba(229,137,107,.85))}
+  .tick{position:absolute;top:0;bottom:0;width:2px;background:var(--turquoise)}
+  .axis{display:flex;justify-content:space-between;margin-top:5px;font-size:10px;color:var(--mute)}
+  .suntimes{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px}
+  .suntimes div{display:flex;align-items:center;gap:6px;color:var(--mute)}
+  .suntimes b{color:var(--glacier);font-weight:500}
+  .dot{width:8px;height:8px;border-radius:2px;flex:0 0 auto}
+  .legend{margin-top:9px;padding-top:9px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mute)}
+
+  /* ---------- timeline ---------- */
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{
+    display:grid;grid-template-columns:62px 1fr;gap:11px;
+    padding:11px 0;border-bottom:1px solid rgba(42,61,85,.55);
+  }
+  .tl li:last-child{border-bottom:0}
+  .t{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:var(--mute);padding-top:2px;direction:ltr;text-align:left}
+  .what{font-size:14.5px}
+  .what .k{font-weight:600}
+  .note{display:block;font-size:12.5px;color:var(--mute);margin-top:3px}
+  li.shoot .t{color:var(--alpenglow)}
+  li.shoot .what .k{color:var(--alpenglow)}
+  li.key{background:linear-gradient(90deg,rgba(229,137,107,.10),transparent);border-radius:8px;padding-inline:8px;margin-inline:-8px}
+  li.rest .t,li.food .t{opacity:.65}
+  li.hard .t{color:var(--danger)}
+  li.hard{background:linear-gradient(90deg,rgba(224,87,79,.14),transparent);border-radius:8px;padding-inline:8px;margin-inline:-8px}
+  li.hard .what .k{color:#f2867f}
+
+  /* ---------- callouts ---------- */
+  .call{border-radius:var(--r);padding:12px 13px;margin:14px 0;font-size:13.5px;border:1px solid}
+  .call b{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px;font-weight:600}
+  .call.warn{background:rgba(240,180,41,.09);border-color:rgba(240,180,41,.38)}
+  .call.warn b{color:var(--warn)}
+  .call.info{background:rgba(78,195,186,.08);border-color:rgba(78,195,186,.3)}
+  .call.info b{color:var(--turquoise)}
+  .call.danger{background:rgba(224,87,79,.11);border-color:rgba(224,87,79,.45)}
+  .call.danger b{color:#f2867f}
+
+  /* ---------- maps ---------- */
+  .maps{display:flex;flex-direction:column;gap:8px;margin:16px 0 4px}
+  .maplink{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:var(--slate);border:1px solid var(--line);border-radius:12px;
+    padding:12px 13px;color:var(--glacier);text-decoration:none;font-size:13.5px;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .maplink:active{transform:scale(.985)}
+  .maplink:hover{border-color:var(--turquoise)}
+  .maplink em{font-style:normal;color:var(--turquoise);font-size:11px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  .maplink:focus-visible{outline:2px solid var(--turquoise);outline-offset:2px}
+
+  h2.sec{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-size:24px;letter-spacing:.03em;margin:34px 0 10px;font-weight:400}
+  h2.sec:first-child{margin-top:4px}
+  .seclead{font-size:12.5px;color:var(--mute);margin:-6px 0 12px}
+
+  /* ---------- place cards (hotels / restaurants) ---------- */
+  .cards{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--slate);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px}
+  .card .when{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;
+    color:var(--turquoise);letter-spacing:.06em;display:block;margin-bottom:3px;
+    direction:ltr;unicode-bidi:isolate;text-align:right;
+  }
+  .card h4{margin:0;font-size:15.5px;font-weight:600}
+  .card .addr{font-size:12.5px;color:var(--mute);margin-top:4px}
+  .card .meta{font-size:12.5px;color:var(--mute);margin-top:6px;padding-top:6px;border-top:1px solid rgba(42,61,85,.6)}
+  .card .acts{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+  .card .acts a{
+    display:inline-block;background:var(--slate-2);border:1px solid var(--line);
+    border-radius:9px;padding:6px 11px;font-size:12px;color:var(--turquoise);text-decoration:none;
+  }
+  .card .acts a:hover{border-color:var(--turquoise)}
+  .card .acts a:focus-visible{outline:2px solid var(--turquoise);outline-offset:2px}
+
+  /* ---------- checklist ---------- */
+  .chk{list-style:none;margin:0;padding:0}
+  .chk li{
+    display:flex;gap:11px;align-items:flex-start;padding:12px 0;
+    border-bottom:1px solid rgba(42,61,85,.55);
+  }
+  .chk input{
+    appearance:none;-webkit-appearance:none;flex:0 0 auto;
+    width:21px;height:21px;margin:1px 0 0;border:1.5px solid var(--line);
+    border-radius:6px;background:var(--slate);cursor:pointer;position:relative;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .chk input:checked{background:var(--turquoise);border-color:var(--turquoise)}
+  .chk input:checked::after{
+    content:'';position:absolute;inset:0;
+    background:no-repeat center/12px 12px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d1520' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  }
+  .chk input:focus-visible{outline:2px solid var(--turquoise);outline-offset:2px}
+  .chk .body{flex:1;font-size:14px}
+  .chk input:checked ~ .body{opacity:.45;text-decoration:line-through}
+  .chk .body span{display:block;font-size:12px;color:var(--mute);margin-top:2px;text-decoration:none}
+  .chk .body a{color:var(--turquoise)}
+  .chk .by{color:var(--warn)}
+  .pri{
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+    padding:2px 6px;border-radius:5px;margin-inline-end:6px;vertical-align:1px;
+  }
+  .p1{background:rgba(224,87,79,.18);color:#f2867f}
+  .p2{background:rgba(240,180,41,.16);color:var(--warn)}
+  .p3{background:rgba(143,163,187,.15);color:var(--mute)}
+
+  footer{padding:26px 16px 40px;color:var(--mute);font-size:12px;text-align:center;border-top:1px solid var(--line);margin-top:30px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Field guide · 9 days</div>
+  <h1>הדולומיטים<br><span class="accent">19–27.8.2026</span></h1>
+  <div class="sub">שעות אור מחושבות ל־CEST · אלפנגלו מתחיל 15 דק' לפני הזריחה · להיות בעמדה 25 דק' לפני</div>
+</header>
+
+<nav><div class="tabs" id="tabs" role="tablist"></div></nav>
+
+<main id="days"></main>
+
+<footer>
+  אור, נסיעות והזמנות · הסימונים בצ'קליסט לא נשמרים אחרי רענון<br>
+  <span class="lat">@jacobychye</span>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   Trip data. Times are local (CEST). "sun" drives the light strip.
+   type: shoot | drive | hike | rest | food | hard  → controls emphasis.
+   --------------------------------------------------------------- */
+const STRIP_START = 4, STRIP_END = 22; // strip covers 04:00–22:00
+
+const DAYS = [
+{
+  date:"19.8", dow:"רביעי", key:"", title:"נחיתה במילאנו",
+  sleep:"Sheraton Milan Malpensa",
+  sun:null,
+  blocks:[
+    {t:"לילה", k:"נחיתה ב־Malpensa T1", n:"מעבר רגלי/שאטל למלון בשדה. לא לעשות כלום מעבר לזה.", type:"rest"}
+  ],
+  maps:[
+    {label:"Terminal 1 → Sheraton", url:"https://www.google.com/maps/dir/?api=1&origin=Malpensa+Airport+Terminal+1&destination=Sheraton+Milan+Malpensa+Airport+Hotel&travelmode=walking"},
+    {label:"מחר: Sheraton → Grand Hotel Ampezzo", url:"https://www.google.com/maps/dir/?api=1&origin=Sheraton+Milan+Malpensa+Airport+Hotel&destination=Grand+Hotel+Ampezzo+Cortina&travelmode=driving"}
+  ]
+},
+{
+  date:"20.8", dow:"חמישי", title:"Malpensa → Cortina → Passo Giau",
+  sleep:"Grand Hotel Ampezzo, Cortina",
+  sun:{rise:"06:17", set:"20:11", blue:"05:42", gold:"19:15"},
+  alert:{type:"warn", title:"לעשות בדרך", text:"ברגע שיש לוחית רישוי מהרכב השכור — להזמין P2 Compatsch ל־25.8. אין שינוי, העברה או החזר אחרי התשלום, אז לא לשלם עם מספר משוער."},
+  blocks:[
+    {t:"08:00", k:"ארוחת בוקר", type:"food"},
+    {t:"09:00", k:"יציאה + איסוף רכב", n:"מסלול A4→A27 דרך Verona ו־Belluno. 5:00–5:30 נטו, לא 4:45.", type:"drive"},
+    {t:"14:30", k:"הגעה ל־Cortina, צ'ק־אין", n:"Grand Hotel Ampezzo, Via XXIX Maggio 15. טל' 0436 808073.", type:"rest"},
+    {t:"15:00", k:"ספא, מנוחה, ארגון ציוד", n:"טעינת סוללות ורחפן, פורמט כרטיסים.", type:"rest"},
+    {t:"18:45", k:"יציאה ל־Passo Giau", n:"35 דק' מהמלון.", type:"drive"},
+    {t:"19:20", k:"Passo Giau — שקיעה", n:"Golden hour עד 20:11, אלפנגלו על Ra Gusela עד 20:25. הרכס פונה מזרחה — הצבע נשאר גם אחרי השקיעה.", type:"shoot", key:true},
+    {t:"21:00", k:"Il Vizietto di Cortina", n:"Corso Italia 53 · 0436 860789. מטבח עד 23:00 — מתאים אחרי שקיעה.", type:"food"}
+  ],
+  maps:[
+    {label:"Malpensa → Grand Hotel Ampezzo", url:"https://www.google.com/maps/dir/?api=1&origin=Sheraton+Milan+Malpensa+Airport+Hotel&destination=Grand+Hotel+Ampezzo+Cortina&travelmode=driving"},
+    {label:"ערב: מלון → Giau → Il Vizietto → מלון", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Grand+Hotel+Ampezzo+Cortina&waypoints=Passo+Giau%7CIl+Vizietto+di+Cortina&travelmode=driving"}
+  ]
+},
+{
+  date:"21.8", dow:"שישי", title:"Landro · Braies · Falzarego",
+  sleep:"Grand Hotel Ampezzo, Cortina",
+  sun:{rise:"06:18", set:"20:10", blue:"05:43", gold:"19:15"},
+  alert:{type:"info", title:"יום מוגן־גשם", text:"Landro ו־Braies עובדים מעולה בערפל ובעננות. אם יש סופות — Cinque Torri נופל ראשון, לא הם. לבקש מהמלון קופסת בוקר לערב הקודם — יוצאים לפני ארוחת הבוקר."},
+  blocks:[
+    {t:"04:45", k:"קימה", type:"rest"},
+    {t:"05:20", k:"יציאה", n:"30 דק' ל־Landro על כביש 51.", type:"drive"},
+    {t:"05:50", k:"Lago di Landro — blue hour + אור ראשון", n:"Cristallo נמצא ממערב לאגם ומקבל את האור הראשון. השתקפות עד שהרוח מתעוררת סביב 07:00.", type:"shoot", key:true},
+    {t:"06:35", k:"יציאה ל־Braies", n:"25 דק'.", type:"drive"},
+    {t:"07:00", k:"Lago di Braies", n:"אור ראשון על Croda del Becco, בית הסירות לפני ההמונים. יש לך Combination Ticket + חניה מובטחת.", type:"shoot", key:true},
+    {t:"09:30", k:"יציאה ל־Bai de Dones", n:"~70 דק'.", type:"drive"},
+    {t:"10:45", k:"רכבל Cinque Torri", n:"פועל 09:00–17:00. כרטיס נקנה רק אם התחזית סבירה.", type:"hike"},
+    {t:"11:15", k:"Cinque Torri — צילום + צהריים למעלה", type:"shoot"},
+    {t:"15:30", k:"חזרה למלון, מנוחה", type:"rest"},
+    {t:"19:00", k:"יציאה ל־Passo Falzarego", n:"25 דק'.", type:"drive"},
+    {t:"19:25", k:"Falzarego — שקיעה", n:"חמש דקות מהחניה. Lagazuoi ו־Tofane. שקיעה 20:10, אלפנגלו עד 20:25.", type:"shoot", key:true},
+    {t:"21:00", k:"Al Camin", n:"Località Alverà 99 · 0436 862010. הוזז מ־20:30 כדי לא לזרוק את השקיעה.", type:"food"}
+  ],
+  maps:[
+    {label:"כל היום: מלון → Landro → Braies → Cinque Torri → Falzarego → Al Camin", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Grand+Hotel+Ampezzo+Cortina&waypoints=Lago+di+Landro%7CLago+di+Braies%7CBai+de+Dones+Cinque+Torri%7CPasso+Falzarego%7CRistorante+Al+Camin+Cortina&travelmode=driving"},
+    {label:"בוקר בלבד: מלון → Landro → Braies", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Lago+di+Braies&waypoints=Lago+di+Landro&travelmode=driving"}
+  ]
+},
+{
+  date:"22.8", dow:"שבת", title:"Cadini בזריחה + Tre Cime",
+  sleep:"Grand Hotel Ampezzo, Cortina",
+  sun:{rise:"06:20", set:"20:08", blue:"05:45", gold:"19:12"},
+  alert:{type:"warn", title:"החניה מוזמנת ל־05:30", text:"לא 07:00. נקודת התצפית של Cadini פונה מזרחה — בזריחה היא השוט החזק של הטיול, ב־07:00 הוא נגמר. לוחית רישוי אפשר להוסיף עד 23:59 בערב שלפני."},
+  blocks:[
+    {t:"04:30", k:"קימה", type:"rest"},
+    {t:"05:05", k:"יציאה", n:"דרך Passo Tre Croci ו־Misurina.", type:"drive"},
+    {t:"05:30", k:"שער Misurina — כניסה לפי ההזמנה", n:"€40, תקף 12 שעות מהשעה שהוזמנה.", type:"drive"},
+    {t:"05:50", k:"חניה ב־Rifugio Auronzo", type:"drive"},
+    {t:"06:00", k:"Cadini di Misurina", n:"20 דק' הליכה מהחניה על שביל 117. אלפנגלו מ־06:05, זריחה 06:20, אור ישיר על המצפורים עד 07:10.", type:"shoot", key:true},
+    {t:"07:30", k:"Tre Cime loop", n:"עם כיוון השעון: Forcella Lavaredo → Locatelli → Langalm. 10 ק\"מ. הפנים הצפוניות מקבלות אור טוב לפני 10:00.", type:"hike"},
+    {t:"13:00", k:"אוכל ב־Rifugio Auronzo", type:"food"},
+    {t:"14:00", k:"Lago d'Antorno + Lago di Misurina", n:"Antorno הוא 200 מ' מהכביש. שתי עצירות של 15 דק' בדרך חזרה.", type:"shoot"},
+    {t:"15:30", k:"מלון — מנוחה מלאה", n:"אין שקיעה היום בכוונה. מחר Sorapis.", type:"rest"},
+    {t:"20:30", k:"Ristorante Tivoli", n:"Località Lacedel 34 · 0436 866400. כוכב מישלן — לאמת בהזמנה שהם פתוחים בשבת בערב.", type:"food"}
+  ],
+  maps:[
+    {label:"מלון → Antorno → Auronzo → Misurina → Tivoli", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Grand+Hotel+Ampezzo+Cortina&waypoints=Lago+d%27Antorno%7CRifugio+Auronzo%7CLago+di+Misurina%7CRistorante+Tivoli+Cortina&travelmode=driving"},
+    {label:"בוקר: מלון → Rifugio Auronzo", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Rifugio+Auronzo&travelmode=driving"}
+  ]
+},
+{
+  date:"23.8", dow:"ראשון", star:true, title:"Lago di Sorapis",
+  sleep:"Grand Hotel Ampezzo, Cortina",
+  sun:{rise:"06:21", set:"20:06", blue:"05:46", gold:"19:10"},
+  alert:{type:"warn", title:"כלל Sorapis", text:"בערב 22.8 בודקים תחזית שעתית. שביל 215 כולל קטעים חשופים, סולמות וכבלים — סלע רטוב שם הוא סיפור אחר. אם הבוקר מתפרק: Sorapis עובר ל־24.8, יום המעברים נדחס, ו־Seceda נופל. זה סדר הקורבנות."},
+  blocks:[
+    {t:"05:00", k:"קימה", type:"rest"},
+    {t:"05:45", k:"יציאה", n:"12 דק' ל־Passo Tre Croci. אין כרטיס ואין היתר רכב — רק להגיע מוקדם לחניה.", type:"drive"},
+    {t:"06:00", k:"תחילת שביל 215", n:"10.5 ק\"מ, 434 מ' טיפוס, ~4 שעות נטו. עם צילום: 5.5–6.", type:"hike"},
+    {t:"08:15", k:"האגם — חלון הצילום", n:"אור עקיף רך בקירק, בלי נצנוץ ישיר על המים. זה בדיוק החלון לטורקיז. אחרי 10:30 השמש נכנסת והצבע נשטף.", type:"shoot", key:true},
+    {t:"10:15", k:"Rifugio Vandelli — אוכל", type:"food"},
+    {t:"11:00", k:"חזרה", type:"hike"},
+    {t:"13:15", k:"רכב → 13:40 מלון", type:"drive"},
+    {t:"13:40", k:"מנוחה, ספא, גיבוי כרטיסים", type:"rest"},
+    {t:"19:30", k:"de LEN", n:"Via Cesare Battisti 66 · 0436 4246. ארוחת ערב 18:00–22:00, פתוח כל יום — בטוח יותר מכל מסעדה בכפר ביום ראשון.", type:"food"}
+  ],
+  maps:[
+    {label:"מלון → Passo Tre Croci → de LEN", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Grand+Hotel+Ampezzo+Cortina&waypoints=Passo+Tre+Croci%7CHotel+de+LEN+Cortina&travelmode=driving"},
+    {label:"בוקר: מלון → Passo Tre Croci (תחילת שביל 215)", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=Passo+Tre+Croci&travelmode=driving"}
+  ]
+},
+{
+  date:"24.8", dow:"שני", title:"יום המעברים: Cortina → Laion + Seceda",
+  sleep:"KIRCHWIES Chalet Resort, Laion",
+  sun:{rise:"06:25", set:"20:07", blue:"05:50", gold:"19:10"},
+  alert:{type:"info", title:"יום ההתאוששות", text:"אין קימה מוקדמת. היום הזה קיים כדי שמחר תוכל לקום ב־04:15 ולתפקד. שלושה מעברים בלי דקה אחת של נהיגה מיותרת. להודיע ל־KIRCHWIES מראש על צ'ק־אין 18:15 — הקבלה שם לא מאוישת כל הערב."},
+  blocks:[
+    {t:"07:45", k:"ארוחת בוקר", type:"food"},
+    {t:"09:15", k:"צ'ק־אאוט ויציאה", type:"drive"},
+    {t:"09:45", k:"Passo Falzarego + Lagazuoi", n:"רכבל 20 דק' למעלה, נוף 360°. רק אם השמיים נקיים.", type:"shoot"},
+    {t:"11:00", k:"Passo Pordoi", n:"Sella מצד אחד, Marmolada מהשני. עצירה מהרכב.", type:"shoot"},
+    {t:"11:50", k:"Passo Sella", n:"התצפית הקלאסית על Sassolungo. סקאוטינג לשקיעה של 26.8.", type:"shoot"},
+    {t:"13:00", k:"צהריים ב־Ortisei", type:"food"},
+    {t:"14:00", k:"רכבל Ortisei → Furnes → Seceda", n:"€74 לאדם הלוך־חזור. כרטיס אונליין מראש — החניה ב־Ortisei מוגבלת.", type:"drive"},
+    {t:"14:30", k:"Seceda — הרכס", n:"האור הטוב באמת מ־16:00: השמש מהמערב מאירה את פני Odle. הרכבל האחרון למטה 17:30, אין שקיעה מהפסגה.", type:"shoot", key:true},
+    {t:"18:15", k:"צ'ק־אין KIRCHWIES", n:"Via Schießstand 23, Laion · 0471 655556. לעדכן אותם שהצ'ק־אין מאוחר.", type:"rest"},
+    {t:"19:30", k:"Saalstuben, Castelrotto", n:"Via O.v.Wolkenstein 12. מטבח חם 18:00–21:00, פתוח כל יום.", type:"food"}
+  ],
+  maps:[
+    {label:"Cortina → Falzarego → Pordoi → Sella → Ortisei → KIRCHWIES", url:"https://www.google.com/maps/dir/?api=1&origin=Grand+Hotel+Ampezzo+Cortina&destination=KIRCHWIES+Chalet+Resort+Laion&waypoints=Passo+Falzarego%7CPasso+Pordoi%7CPasso+Sella%7COrtisei&travelmode=driving"},
+    {label:"Ortisei → KIRCHWIES → Saalstuben", url:"https://www.google.com/maps/dir/?api=1&origin=Ortisei&destination=Cafe+Restaurant+Saalstuben+Kastelruth&waypoints=KIRCHWIES+Chalet+Resort+Laion&travelmode=driving"}
+  ]
+},
+{
+  date:"25.8", dow:"שלישי", star:true, title:"Alpe di Siusi בזריחה + E-Bikes",
+  sleep:"KIRCHWIES Chalet Resort, Laion",
+  sun:{rise:"06:27", set:"20:05", blue:"05:52", gold:"19:08"},
+  alert:{type:"warn", title:"שני התלויים בצד שלישי", text:"1) P2 Compatsch מוזמן ל־25.8 — ההזמנה היא גם אישור הכניסה ברכב. 2) האופניים מ־GASKO מחכים ב־P2 ב־05:30, לא בחנות. הכביש נסגר לרכב פרטי בעלייה 09:00–17:00 — אתה בפנים לפני ויוצא אחרי."},
+  blocks:[
+    {t:"04:15", k:"קימה", type:"rest"},
+    {t:"04:50", k:"יציאה מ־Laion", n:"~40 דק' דרך Kastelruth ו־Seis. החניון נפתח ב־05:00 בדיוק.", type:"drive"},
+    {t:"05:30", k:"P2 Compatsch", type:"drive"},
+    {t:"05:35", k:"קבלת האופניים + רכיבה לעמדה", type:"hike"},
+    {t:"05:52", k:"Blue hour — הבקתות + Sassolungo", n:"האור הקר על האחו לפני שהשמש נוגעת ברכס.", type:"shoot", key:true},
+    {t:"06:12", k:"אלפנגלו — החלון החזק של הבוקר", n:"Sassolungo ו־Schlern מקבלים ורוד לפני שהאחו מואר. 15 דקות, לא יותר.", type:"shoot", key:true},
+    {t:"06:30", k:"Golden hour על האחו", n:"אור נמוך מהמזרח, ערפל בוקר בשקעים בין הבקתות. עד 07:40.", type:"shoot", key:true},
+    {t:"07:40", k:"קפה וארוחת בוקר ב־Compatsch", type:"food"},
+    {t:"08:30", k:"E-bike: Compatsch → Ritsch → Saltria → Molignon → חזרה", n:"אחו פתוח, כמעט בלי תנועה עד 10:00. עצירות צילום לפי מה שנפתח.", type:"hike"},
+    {t:"13:00", k:"צהריים", type:"food"},
+    {t:"14:30", k:"חזרה ל־KIRCHWIES — ספא, בריכה, שינה", type:"rest"},
+    {t:"19:30", k:"NOMAD, Castelrotto", n:"Krausplatz 5 · 0471 139 0080. מטבח 19:00–22:00. שלישי פתוח (ראשון ושני סגור).", type:"food"}
+  ],
+  maps:[
+    {label:"KIRCHWIES → P2 Compatsch", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=P2+Compatsch+Seiser+Alm&travelmode=driving"},
+    {label:"כל היום: KIRCHWIES → P2 → NOMAD → KIRCHWIES", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=KIRCHWIES+Chalet+Resort+Laion&waypoints=P2+Compatsch+Seiser+Alm%7CNOMAD+Restaurant+Castelrotto&travelmode=driving"}
+  ]
+},
+{
+  date:"26.8", dow:"רביעי", title:"Carezza · QC Terme · Passo Sella",
+  sleep:"KIRCHWIES Chalet Resort, Laion",
+  sun:{rise:"06:28", set:"20:03", blue:"05:53", gold:"19:05"},
+  alert:{type:"info", title:"למה Carezza בבוקר", text:"Latemar נמצא ממערב לאגם — הוא מקבל אור בוקר, והמים שקטים לפני שהחניון מתפוצץ. אין הזמנת חניה מראש, משלמים במקום (€13 עד 6 שעות). בערב לארוז — מחר יוצאים מוקדם."},
+  blocks:[
+    {t:"06:45", k:"קימה", type:"rest"},
+    {t:"07:15", k:"יציאה", n:"~55 דק' דרך Bolzano ו־Val d'Ega.", type:"drive"},
+    {t:"08:15", k:"Lago di Carezza", n:"אור בוקר על Latemar + השתקפות. זה החלון היחיד שעובד שם. 90 דק' מספיקות.", type:"shoot", key:true},
+    {t:"10:15", k:"Passo Costalunga → Val di Fassa", type:"drive"},
+    {t:"11:30", k:"צהריים ב־Pozza / Vigo di Fassa", type:"food"},
+    {t:"13:00", k:"QC Terme Dolomiti", n:"כניסה מוזמנת לשעה. ארבע שעות זה בדיוק הזמן הנכון.", type:"rest"},
+    {t:"17:30", k:"יציאה ל־Passo Sella", n:"~45 דק' דרך Canazei ו־Passo Pordoi.", type:"drive"},
+    {t:"18:20", k:"Passo Sella — golden hour + שקיעה", n:"Golden hour ארוך על Sassolungo מ־19:05, שקיעה 20:03, אלפנגלו עד 20:20. השקיעה הטובה בשבוע.", type:"shoot", key:true},
+    {t:"21:15", k:"Tubladel, Ortisei", n:"Via Christian Trebinger 22 · 0471 796879. הוזז מ־20:45. ארוחת ערב עד 22:00 — 21:15 הוא הגבול.", type:"food"}
+  ],
+  maps:[
+    {label:"כל היום: KIRCHWIES → Carezza → QC → Sella → Tubladel", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=KIRCHWIES+Chalet+Resort+Laion&waypoints=Lago+di+Carezza%7CQC+Terme+Dolomiti+Pozza+di+Fassa%7CPasso+Sella%7CTubladel+Ortisei&travelmode=driving"},
+    {label:"בוקר: KIRCHWIES → Lago di Carezza", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=Lago+di+Carezza&travelmode=driving"}
+  ]
+},
+{
+  date:"27.8", dow:"חמישי", title:"Laion → אאוטלט יוקרה → Milano Centrale",
+  sleep:"—",
+  sun:null,
+  alert:{type:"danger", title:"18:30 במילאנו — קו אדום", text:"סוכנות הרכב נסגרת ב־19:00. עוזבים את האאוטלט ב־16:00 בדיוק, גם אם באמצע קופה. 16:00 → Milano Centrale זה 1:20–1:35 נטו, פלוס תדלוק והחזרת הרכב — הבאפר האמיתי הוא ~50 דק', לא יותר."},
+  blocks:[
+    {t:"07:15", k:"ארוחת בוקר", n:"לוודא מול KIRCHWIES שאפשר מ־07:15.", type:"food"},
+    {t:"08:00", k:"צ'ק־אאוט ויציאה", n:"A22 (Brennero) דרומה → Modena → A1 מערבה. ~3:50 נטו + עצירת קפה אחת.", type:"drive"},
+    {t:"11:50", k:"Fidenza Village — אאוטלט מותגי יוקרה", n:"Prada · Gucci · Versace · Dolce&Gabbana · Valentino · Armani · Jimmy Choo · Givenchy. פתוח כל יום 10:00–20:00. חניה חינם. טל' 0524 33551.", type:"shoot", key:true},
+    {t:"13:15", k:"אוכל באאוטלט", n:"יש דוכני אוכל בתוך הכפר — לא לצאת ולחפש מסעדה בעיר.", type:"food"},
+    {t:"16:00", k:"יציאה מהאאוטלט — דדליין", n:"לא 16:15. זו השעה שמחזיקה את כל היום.", type:"hard"},
+    {t:"17:00", k:"תדלוק על A1 לפני מילאנו", n:"להחזיר עם מיכל מלא — תדלוק בתוך מילאנו מבזבז 20 דק'.", type:"drive"},
+    {t:"17:35", k:"Milano Centrale — החזרת הרכב", n:"החניון של סוכנויות ההשכרה נמצא מתחת/ליד התחנה. Milano Centrale מחוץ ל־Area C, אין אגרת כניסה. Area B — לוודא שהרכב השכור עומד בתקן (רכב חדש = בסדר).", type:"hard"},
+    {t:"18:30", k:"קו אדום — חייבים להיות בתחנה", n:"הסוכנות סוגרת ב־19:00.", type:"hard"}
+  ],
+  maps:[
+    {label:"כל היום: KIRCHWIES → Fidenza Village → Milano Centrale", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=Milano+Centrale+railway+station&waypoints=Fidenza+Village+Outlet&travelmode=driving"},
+    {label:"קטע קריטי: Fidenza Village → Milano Centrale", url:"https://www.google.com/maps/dir/?api=1&origin=Fidenza+Village+Outlet&destination=Milano+Centrale+railway+station&travelmode=driving"},
+    {label:"תוכנית ב': KIRCHWIES → Franciacorta Outlet → Milano Centrale", url:"https://www.google.com/maps/dir/?api=1&origin=KIRCHWIES+Chalet+Resort+Laion&destination=Milano+Centrale+railway+station&waypoints=Franciacorta+Village+Outlet+Rodengo+Saiano&travelmode=driving"}
+  ]
+}
+];
+
+/* ---------------- hotels ---------------- */
+const HOTELS = [
+  {
+    when:"19.8 · לילה אחד",
+    name:"Sheraton Milan Malpensa Airport Hotel",
+    addr:"Terminal 1, Aeroporto di Malpensa, 21010 Ferno (VA)",
+    tel:"+39 02 23351",
+    meta:"מחובר ישירות ל־Terminal 1 במעבר מקורה — אין שאטל ואין מונית. צ'ק־אין 15:00, צ'ק־אאוט 12:00. להודיע על הגעה מאוחרת כדי שלא יבטלו את החדר.",
+    maps:"https://www.google.com/maps/search/?api=1&query=Sheraton+Milan+Malpensa+Airport+Hotel"
+  },
+  {
+    when:"20–24.8 · 4 לילות",
+    name:"Grand Hotel Ampezzo",
+    addr:"Via XXIX Maggio 15, 32043 Cortina d'Ampezzo (BL)",
+    tel:"+39 0436 808073",
+    meta:"בסיס הפעילות בקורטינה. צ'ק־אין מתוכנן 14:30 ב־20.8, צ'ק־אאוט 09:15 ב־24.8. חשוב: ב־21, 22 ו־23 יוצאים לפני ארוחת הבוקר — לבקש קופסאות בוקר לערב שלפני, ולוודא שהחניה בטוחה בלילה לציוד.",
+    maps:"https://www.google.com/maps/search/?api=1&query=Grand+Hotel+Ampezzo+Cortina+d%27Ampezzo"
+  },
+  {
+    when:"24–27.8 · 3 לילות",
+    name:"KIRCHWIES Chalet Resort (Zu Kirchwies)",
+    addr:"Via Schießstand 23, 39040 Laion / Lajen (BZ)",
+    tel:"+39 0471 655556",
+    meta:"צ'ק־אין מתוכנן 18:15 ב־24.8 — הם מבקשים לדעת שעת הגעה מראש, אז לשלוח הודעה. ב־25.8 יוצאים ב־04:50 וב־26.8 ב־07:15: לבקש קוד/מפתח ליציאה מוקדמת ולוודא שהשער של החניה נפתח בלילה. צ'ק־אאוט 08:00 ב־27.8.",
+    maps:"https://www.google.com/maps/search/?api=1&query=Zu+Kirchwies+Chalet+Resort+Laion"
+  }
+];
+
+/* ---------------- restaurants ---------------- */
+const RESTAURANTS = [
+  {when:"20.8 · 21:00", name:"Il Vizietto di Cortina", addr:"Corso Italia 53, Cortina d'Ampezzo", tel:"+39 0436 860789",
+   meta:"מטבח פתוח עד 23:00. השעה המאוחרת היא בכוונה — היא מאפשרת את השקיעה ב־Passo Giau.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Il+Vizietto+di+Cortina"},
+  {when:"21.8 · 21:00", name:"Al Camin", addr:"Località Alverà 99, Cortina d'Ampezzo", tel:"+39 0436 862010",
+   meta:"הוזז מ־20:30 ל־21:00 כדי לא לזרוק את השקיעה ב־Falzarego. לציין בהזמנה שמגיעים אחרי צילום שקיעה.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Ristorante+Al+Camin+Cortina"},
+  {when:"22.8 · 20:30", name:"Ristorante Tivoli", addr:"Località Lacedel 34, Cortina d'Ampezzo", tel:"+39 0436 866400",
+   meta:"הארוחה המיוחדת של השבוע, כוכב מישלן. חובה להזמין מוקדם ולאמת בטלפון שהם פתוחים בשבת בערב. קוד לבוש: לא בגדי הליכה.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Ristorante+Tivoli+Cortina+d%27Ampezzo"},
+  {when:"23.8 · 19:30", name:"de LEN (Hotel de LEN)", addr:"Via Cesare Battisti 66, Cortina d'Ampezzo", tel:"+39 0436 4246",
+   meta:"ארוחת ערב 18:00–22:00, פתוח כל יום — הבחירה הבטוחה ליום ראשון, כשחצי מקורטינה סגורה. אחרי Sorapis זה 10 דק' מהמלון.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Hotel+de+LEN+Cortina"},
+  {when:"24.8 · 19:30", name:"Café Restaurant Saalstuben", addr:"Via O.v.Wolkenstein 12, Castelrotto / Kastelruth", tel:"—",
+   meta:"מטבח חם 18:00–21:00, פתוח כל יום. 12 דק' מ־KIRCHWIES. אם Seceda נמשך — להתקשר ולדחות, לא לוותר.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Cafe+Restaurant+Saalstuben+Kastelruth"},
+  {when:"25.8 · 19:30", name:"NOMAD Restaurant", addr:"Krausplatz 5, 39040 Castelrotto / Kastelruth", tel:"+39 0471 139 0080",
+   meta:"מטבח 19:00–22:00. סגור ראשון ושני — 25.8 הוא שלישי, ולכן הוא נמצא דווקא ביום הזה. הזמנה חובה, המקום קטן.",
+   maps:"https://www.google.com/maps/search/?api=1&query=NOMAD+Restaurant+Castelrotto"},
+  {when:"26.8 · 21:15", name:"Tubladel", addr:"Via Christian Trebinger 22, 39046 Ortisei", tel:"+39 0471 796879",
+   meta:"הוזז מ־20:45 ל־21:15 בגלל השקיעה ב־Passo Sella. ארוחת ערב עד 22:00 — 21:15 הוא באמת הגבול, לציין את זה בהזמנה.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Ristorante+Tubladel+Ortisei"},
+  {when:"22.8 · צהריים", name:"Rifugio Auronzo", addr:"Tre Cime di Lavaredo", tel:"—",
+   meta:"בלי הזמנה, אוכל הררי פשוט ליד החניה. גיבוי: Rifugio Lavaredo על המסלול.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Rifugio+Auronzo"},
+  {when:"23.8 · צהריים", name:"Rifugio Vandelli", addr:"Lago di Sorapis", tel:"—",
+   meta:"על שפת האגם, בלי הזמנה. מזומן — קליטה שם לא אמינה.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Rifugio+Vandelli+Sorapis"},
+  {when:"27.8 · צהריים", name:"Fidenza Village — אזור האוכל", addr:"Via San Michele Campagna, 43036 Fidenza (PR)", tel:"+39 0524 33551",
+   meta:"אוכלים בתוך האאוטלט. לא יוצאים לחפש מסעדה בעיר — כל יציאה מהשטח שורפת 40 דק' מול הדדליין של 18:30.",
+   maps:"https://www.google.com/maps/search/?api=1&query=Fidenza+Village+Outlet"}
+];
+
+const CHECKLIST = [
+  {p:1, t:"Lago di Braies — Combination Ticket ל־21.8", n:"€44, כולל אישור מעבר וחניה מובטחת. זה הדבר שנגמר.", by:"היום — לפני הטיסה", url:"https://www.prags.bz/en"},
+  {p:1, t:"Tre Cime — חניית Rifugio Auronzo ל־22.8 בשעה 05:30", n:"€40, תקף 12 שעות. לוחית רישוי אפשר להוסיף עד 23:59 בערב שלפני — אין סיבה לחכות.", by:"היום · עדכון לוחית עד 23:59 ב־21.8", url:"https://pass.auronzo.info"},
+  {p:1, t:"GASKO — להעביר את האופניים ל־25.8 + מסירה ב־P2 ב־05:30", n:"התלוי־צד־שלישי היחיד בטיול. לכתוב ל־Benny ראשון.", by:"היום — ולוודא אישור בכתב עד 23.8"},
+  {p:1, t:"P2 Compatsch ל־25.8", n:"נפתח להזמנה ב־18.8. €30. רק עם לוחית רישוי נכונה — אין שינוי, העברה, ביטול או החזר.", by:"מיד אחרי איסוף הרכב ב־20.8", url:"https://www.seiseralm.it/en/info-service/mobility/access-to-seiser-alm/seiser-alm-parking-reservation.html"},
+  {p:1, t:"Ristorante Tivoli ל־22.8 בשעה 20:30", n:"כוכב מישלן, שולחנות נגמרים. טל' +39 0436 866400 — ולאמת שהם פתוחים בשבת בערב.", by:"היום — בטלפון, לא במייל"},
+  {p:1, t:"החזרת הרכב במילאנו ב־27.8", n:"לאמת מול חברת ההשכרה: כתובת מדויקת של נקודת ההחזרה ליד Milano Centrale, ששעת הסגירה היא 19:00, ומה קורה אם מאחרים. לבקש את זה בכתב.", by:"היום — לפני שיוצאים לדרך"},
+  {p:1, t:"QC Terme Dolomiti ל־26.8 בשעה 13:00", by:"עד 24.8", url:"https://booking.qcterme.com/"},
+  {p:2, t:"Seceda — כרטיס רכבל ל־24.8", n:"€74 לאדם, הלוך־חזור משולב Ortisei–Furnes–Seceda.", by:"עד בוקר 24.8 — אונליין, לא בקופה", url:"https://seceda.axess.shop/"},
+  {p:2, t:"מסעדות — כל השבוע", n:"20.8 Vizietto 21:00 · 21.8 Al Camin 21:00 · 22.8 Tivoli 20:30 (לאמת שבת) · 23.8 de LEN 19:30 · 24.8 Saalstuben 19:30 · 25.8 NOMAD 19:30 · 26.8 Tubladel 21:15. כל הטלפונים בלשונית מסעדות.", by:"היום–מחר · NOMAD ו־Tubladel לפחות 48 ש' מראש"},
+  {p:2, t:"Grand Hotel Ampezzo — לאשר צ'ק־אין 14:30 + קופסאות בוקר", n:"ב־21, 22 ו־23 יוצאים לפני ארוחת הבוקר. לבקש קופסה בערב שלפני. טל' +39 0436 808073.", by:"עד 20.8 בבוקר"},
+  {p:2, t:"KIRCHWIES — להודיע על צ'ק־אין 18:15 ב־24.8", n:"וגם: יציאה 04:50 ב־25.8 ו־07:15 ב־26.8 — לוודא מפתח/קוד ושער חניה. טל' +39 0471 655556.", by:"עד 23.8"},
+  {p:2, t:"Sheraton Malpensa — לאשר הגעה מאוחרת ל־19.8", n:"טיסה מתעכבת = חדר משוחרר. הודעה קצרה פותרת את זה.", by:"היום"},
+  {p:2, t:"Fidenza Village ל־27.8 — לא צריך הזמנה", n:"פתוח כל יום 10:00–20:00, חניה חינם. כדאי להירשם לכרטיס ההטבות באתר לפני ההגעה. טל' +39 0524 33551.", by:"לוודא שעות ב־26.8 בערב", url:"https://www.thebicestercollection.com/fidenza-village/en"},
+  {p:3, t:"Cinque Torri — לחכות לערב 20.8", n:"לקנות רק אם התחזית ל־21 סבירה.", by:"ערב 20.8", url:"https://5torri.it/EN/p37-Online-Ticket"},
+  {p:3, t:"לבקש מחברת ההשכרה את לוחית הרישוי מראש", n:"אם אי אפשר — להזמין P2 מיד אחרי איסוף הרכב ב־20.8.", by:"היום"},
+  {p:3, t:"מילאנו — Area B / Area C", n:"Milano Centrale נמצאת מחוץ ל־Area C, אז אין אגרת כניסה. Area B חוסמת רכבים מזהמים — רכב שכור חדש עומד בתקן, אבל שווה לוודא מול הסוכנות.", by:"בשיחה עם חברת ההשכרה"},
+  {p:3, t:"לא צריך להזמין כלום עבור:", n:"Sorapis · Passo Giau · Passo Sella · Passo Pordoi · Falzarego (רכבל במקום) · Lago di Landro · Lago di Carezza (משלמים בחניון) · Fidenza Village"}
+];
+
+/* ---------------- render ---------------- */
+const toMin = s => { const [h,m] = s.split(":").map(Number); return h*60+m; };
+const pct = s => ((toMin(s) - STRIP_START*60) / ((STRIP_END-STRIP_START)*60)) * 100;
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const telHref = t => "tel:" + t.replace(/[^\d+]/g,"");
+
+function lightStrip(sun, blocks){
+  const riseP = pct(sun.rise), blueP = pct(sun.blue), setP = pct(sun.set), goldP = pct(sun.gold);
+  const amEnd = pct(sun.rise) + (90/((STRIP_END-STRIP_START)*60))*100;
+  const ticks = blocks.filter(b => b.type==="shoot" && /^\d{2}:\d{2}$/.test(b.t))
+    .map(b => `<span class="tick" style="right:${pct(b.t)}%" aria-hidden="true"></span>`).join("");
+  return `
+  <div class="lightcard">
+    <h3>חלונות אור</h3>
+    <div class="strip" role="img" aria-label="חלונות האור של היום">
+      <span class="band b-blue" style="right:${blueP}%;width:${riseP-blueP}%"></span>
+      <span class="band b-gold" style="right:${riseP}%;width:${amEnd-riseP}%"></span>
+      <span class="band b-goldpm" style="right:${goldP}%;width:${setP-goldP}%"></span>
+      ${ticks}
+    </div>
+    <div class="axis"><span class="mono">04:00</span><span class="mono">13:00</span><span class="mono">22:00</span></div>
+    <div class="suntimes">
+      <div><span class="dot" style="background:var(--bluehour)"></span>Blue hour <b class="mono">${sun.blue}</b></div>
+      <div><span class="dot" style="background:var(--alpenglow)"></span>זריחה <b class="mono">${sun.rise}</b></div>
+      <div><span class="dot" style="background:var(--alpenglow)"></span>Golden <b class="mono">${sun.gold}</b></div>
+      <div><span class="dot" style="background:var(--alpenglow)"></span>שקיעה <b class="mono">${sun.set}</b></div>
+    </div>
+    <div class="legend">אלפנגלו על הפסגות מתחיל <span class="mono">${minToStr(toMin(sun.blue)+20)}</span> · השמש מופיעה מעל הרכס 15–25 דק' אחרי הזריחה הרשמית · הקווים הטורקיז הם עמדות הצילום של היום</div>
+  </div>`;
+}
+function minToStr(m){ return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0"); }
+
+function dayHTML(d, i){
+  const blocks = d.blocks.map(b => `
+    <li class="${b.type}${b.key?" key":""}">
+      <div class="t">${esc(b.t)}</div>
+      <div class="what"><span class="k">${esc(b.k)}</span>${b.n?`<span class="note">${esc(b.n)}</span>`:""}</div>
+    </li>`).join("");
+  const maps = d.maps.map(m => `
+    <a class="maplink" href="${m.url}" target="_blank" rel="noopener">
+      <span>${esc(m.label)}</span><em>נווט</em>
+    </a>`).join("");
+  return `
+  <section class="day${i===0?" on":""}" id="day-${i}" role="tabpanel" aria-labelledby="tab-${i}">
+    <div class="dayhead">
+      <div class="dnum">${d.date}<small>${d.dow}</small></div>
+      <div class="dtitle">${d.star?'<span class="star">★ </span>':""}${esc(d.title)}</div>
+      ${d.sleep && d.sleep!=="—" ? `<div class="sleep"><i>🛏</i><b>ישנים:</b> ${esc(d.sleep)}</div>` : ""}
+    </div>
+    ${d.sun ? lightStrip(d.sun, d.blocks) : ""}
+    ${d.alert ? `<div class="call ${d.alert.type}"><b>${esc(d.alert.title)}</b>${esc(d.alert.text)}</div>` : ""}
+    <ul class="tl">${blocks}</ul>
+    <h2 class="sec">מסלול היום בגוגל מפות</h2>
+    <div class="maps">${maps}</div>
+  </section>`;
+}
+
+function cardHTML(p){
+  const acts = [
+    p.maps ? `<a href="${p.maps}" target="_blank" rel="noopener">פתח במפות ↗</a>` : "",
+    (p.tel && p.tel!=="—") ? `<a href="${telHref(p.tel)}"><span class="lat">${esc(p.tel)}</span></a>` : ""
+  ].filter(Boolean).join("");
+  return `
+    <div class="card">
+      <span class="when">${esc(p.when)}</span>
+      <h4>${esc(p.name)}</h4>
+      <div class="addr">${esc(p.addr)}</div>
+      ${p.meta?`<div class="meta">${esc(p.meta)}</div>`:""}
+      <div class="acts">${acts}</div>
+    </div>`;
+}
+
+function checklistHTML(){
+  const items = CHECKLIST.map((c,idx) => `
+    <li>
+      <input type="checkbox" id="c${idx}" aria-label="${esc(c.t)}">
+      <label class="body" for="c${idx}">
+        <span class="pri p${c.p}">${c.p===1?"עכשיו":c.p===2?"היום":"אחר כך"}</span>${esc(c.t)}
+        ${c.n?`<span>${esc(c.n)}</span>`:""}
+        ${c.by?`<span class="by">⏳ להזמין עד: ${esc(c.by)}</span>`:""}
+        ${c.url?`<span><a href="${c.url}" target="_blank" rel="noopener">פתח דף הזמנה ↗</a></span>`:""}
+      </label>
+    </li>`).join("");
+  return `<h2 class="sec">מה להזמין ולמתי</h2>
+    <div class="seclead">עכשיו = לפני שיוצאים · היום = השבוע הקרוב · אחר כך = תלוי מזג אוויר</div>
+    <ul class="chk">${items}</ul>`;
+}
+
+function infoHTML(i){
+  return `
+  <section class="day" id="day-${i}" role="tabpanel" aria-labelledby="tab-${i}">
+    ${checklistHTML()}
+    <h2 class="sec">מלונות</h2>
+    <div class="seclead">שלוש לינות שונות · הכתובות והטלפונים לחיוג ישיר</div>
+    <div class="cards">${HOTELS.map(cardHTML).join("")}</div>
+    <h2 class="sec">מסעדות</h2>
+    <div class="seclead">השעות תואמות ללוז הקיים — לא הוזזה אף ארוחה</div>
+    <div class="cards">${RESTAURANTS.map(cardHTML).join("")}</div>
+  </section>`;
+}
+
+const tabsEl = document.getElementById("tabs");
+const daysEl = document.getElementById("days");
+const INFO_I = DAYS.length;
+daysEl.innerHTML = DAYS.map(dayHTML).join("") + infoHTML(INFO_I);
+tabsEl.innerHTML = DAYS.map((d,i)=>`
+  <button class="tab" id="tab-${i}" role="tab" aria-controls="day-${i}" aria-selected="${i===0}">
+    ${d.date.replace(".8","")}${d.star?"★":""}<span>${d.dow.slice(0,3)}</span>
+  </button>`).join("") + `
+  <button class="tab info-tab" id="tab-${INFO_I}" role="tab" aria-controls="day-${INFO_I}" aria-selected="false">
+    ⓘ<span>מידע</span>
+  </button>`;
+
+const tabs = [...tabsEl.querySelectorAll(".tab")];
+const panels = [...daysEl.querySelectorAll(".day")];
+function select(i){
+  tabs.forEach((t,n)=>t.setAttribute("aria-selected", n===i));
+  panels.forEach((p,n)=>p.classList.toggle("on", n===i));
+  tabs[i].scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+tabs.forEach((t,i)=>t.addEventListener("click", ()=>select(i)));
+
+/* open today's day if we're inside the trip window */
+(function openToday(){
+  const now = new Date();
+  const label = `${now.getDate()}.${now.getMonth()+1}`;
+  const i = DAYS.findIndex(d => d.date === label);
+  if (i > -1) select(i);
+})();
+</script>
+</body>
+</html>
