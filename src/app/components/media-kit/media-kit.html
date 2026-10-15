@@ -56,7 +56,7 @@
   <!-- AT A GLANCE -->
   <section class="section" id="glance">
     <div class="container">
-      <div class="eyebrow reveal" appReveal>The snapshot</div>
+      <div class="eyebrow reveal" appReveal>The snapshot · {{ k.reportingPeriod }}</div>
       <h2 class="section-title reveal" appReveal>A following that punches far above its size.</h2>
       <div class="glance-grid">
         @for (s of k.glanceStats; track s.name; let i = $index) {
@@ -74,28 +74,28 @@
   <section class="section" id="reach">
     <div class="container">
       <div class="eyebrow reveal" appReveal>Reach &amp; discovery</div>
-      <h2 class="section-title reveal" appReveal>76% of my views come from people who<br />don't follow me yet.</h2>
+      <h2 class="section-title reveal" appReveal>{{ k.nonFollowerPct.value }}% of my views come from people who<br />don't follow me yet.</h2>
       <p class="section-lead reveal" appReveal>
-        That's the metric that matters for a hotel. My content doesn't just preach to my own audience —
-        it's pushed into the feeds of <strong>new travellers</strong> discovering destinations for the first time.
+        My content reaches beyond my existing community, helping <strong>new travellers</strong>
+        discover destinations. Total views include Instagram and crossposted Facebook content.
       </p>
 
       <div class="reach-grid">
         <div class="card big-figure reveal" appReveal>
-          <div class="bf-num grad" [appCountUp]="k.nonFollowerPct.value" [countSuffix]="k.nonFollowerPct.suffix ?? ''">0</div>
+          <div class="bf-num grad" [appCountUp]="k.nonFollowerPct.value" [countSuffix]="k.nonFollowerPct.suffix ?? ''" [countDecimals]="k.nonFollowerPct.decimals ?? 0">0</div>
           <div class="bf-label">of views from non-followers</div>
           <div class="split-bar">
             <span class="split-fill" appBarFill [barVal]="k.nonFollowerPct.value" [barMax]="100"></span>
           </div>
           <div class="split-legend">
-            <span><i class="sw sw-teal"></i>Non-followers 76%</span>
-            <span><i class="sw sw-dim"></i>Followers 24%</span>
+            <span><i class="sw sw-teal"></i>Non-followers {{ k.nonFollowerPct.value }}%</span>
+            <span><i class="sw sw-dim"></i>Followers {{ 100 - k.nonFollowerPct.value }}%</span>
           </div>
         </div>
 
         <div class="card big-figure reveal" appReveal>
-          <div class="bf-num grad-gold" [appCountUp]="k.reachMultiple.value" [countSuffix]="k.reachMultiple.suffix ?? ''" [countDecimals]="k.reachMultiple.decimals ?? 0">0</div>
-          <div class="bf-label">reach vs. my follower count</div>
+          <div class="bf-num grad-gold" [appCountUp]="k.viewers.value" [countSuffix]="k.viewers.suffix ?? ''" [countDecimals]="k.viewers.decimals ?? 0">0</div>
+          <div class="bf-label">estimated Meta-account viewers</div>
           <p class="bf-desc">{{ k.reachDesc }}</p>
         </div>
 
@@ -112,9 +112,9 @@
             </div>
           </div>
           <div class="donut-legend">
-            <span><i class="sw sw-teal"></i>Reels — 83.8%</span>
-            <span><i class="sw sw-gold"></i>Stories — 16.2%</span>
-            <span><i class="sw sw-dim"></i>Posts — 0%</span>
+            <span><i class="sw sw-teal"></i>{{ k.donutSegments[0].label }} — {{ k.donutSegments[0].pct }}%</span>
+            <span><i class="sw sw-gold"></i>{{ k.donutSegments[1].label }} — {{ k.donutSegments[1].pct }}%</span>
+            <span><i class="sw sw-dim"></i>{{ k.donutSegments[2].label }} — {{ k.donutSegments[2].pct }}%</span>
           </div>
           <p class="donut-cap">Where my views come from, by format</p>
         </div>
@@ -126,8 +126,8 @@
   <section class="section" id="performance">
     <div class="container">
       <div class="eyebrow reveal" appReveal>Top performing content</div>
-      <h2 class="section-title reveal" appReveal>Recent reels, by views.</h2>
-      <p class="section-lead reveal" appReveal>A single reel routinely outreaches my entire follower base. Here are my five strongest from the last 30 days.</p>
+      <h2 class="section-title reveal" appReveal>Recent reels, by reported views.</h2>
+      <p class="section-lead reveal" appReveal>Five reels with available view counts in the Instagram Content Insights “Last 30 days” view, checked 15 Oct 2026. An unavailable collaboration-reel count is excluded.</p>
 
       <div class="card chart-card reveal" appReveal>
         <div class="bars" id="reelBars">
@@ -139,7 +139,7 @@
             </div>
           }
         </div>
-        <p class="chart-cap">Views per reel · last 30 days. Reels drive <strong>{{ k.reelsCaptionPct }}</strong> of all my interactions.</p>
+        <p class="chart-cap">Rounded view counts as displayed in Content Insights. Reels drive <strong>{{ k.reelsCaptionPct }}</strong> of content interactions in {{ k.reportingPeriod }}.</p>
       </div>
     </div>
   </section>
@@ -167,7 +167,7 @@
     <div class="container">
       <div class="eyebrow reveal" appReveal>Audience activity</div>
       <h2 class="section-title reveal" appReveal>When your future guests are watching.</h2>
-      <p class="section-lead reveal" appReveal>My audience is most active in the early hours — content lands while they're dreaming about their next trip. Posting cadence is tuned to these windows.</p>
+      <p class="section-lead reveal" appReveal>Monday follower activity from Instagram Insights, for {{ k.reportingPeriod }}. Hours use Pacific Standard Time (PST), as specified by Instagram.</p>
 
       <div class="card chart-card reveal" appReveal>
         <div class="vbars" id="timeBars">
@@ -178,7 +178,7 @@
             </div>
           }
         </div>
-        <p class="chart-cap">Active audience by time of day · peak at <strong>{{ k.peakTime }}</strong></p>
+        <p class="chart-cap">Monday follower activity · peak at <strong>{{ k.peakTime }}</strong></p>
       </div>
     </div>
   </section>
