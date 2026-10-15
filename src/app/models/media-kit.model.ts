@@ -1,6 +1,6 @@
 /**
  * Typed model for the media kit.
- * All figures here are REAL Instagram Professional insights (trailing 30 days).
+ * Figures retain their verified reporting period, source labels and platform scope.
  * Keep this the single source of truth — future DB-backed features should
  * hydrate these same interfaces.
  */
@@ -82,12 +82,13 @@ export interface MediaKitData {
   heroTitleAccent: string;
   heroSub: string;
   heroFoot: string;
+  reportingPeriod: string;
   heroStats: HeroStat[];
 
   glanceStats: GlanceStat[];
 
   nonFollowerPct: AnimatedNumber;
-  reachMultiple: AnimatedNumber;
+  viewers: AnimatedNumber;
   reachDesc: string;
   donutSegments: DonutSegment[];
   donutCenterValue: string;
